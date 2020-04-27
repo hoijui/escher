@@ -53,7 +53,6 @@ echo
 echo "Removing previous build artifacts ..."
 rm -Rf "$out_dir/img"
 rm -Rf "$out_dir/css"
-rm -Rf "$out_dir/pdf"
 rm -f "$out_dir/"*.html
 
 echo
@@ -62,8 +61,6 @@ echo -e "\tcss ..."
 cp -r "$src_dir/css" "$out_dir/"
 echo -e "\timg ..."
 cp -r "$src_dir/img" "$out_dir/"
-echo -e "\tpdf ..."
-cp -r "$src_dir/pdf" "$out_dir/"
 rm -f "$out_dir/css/font/.gitignore"
 
 echo
