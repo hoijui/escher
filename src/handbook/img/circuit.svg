@@ -16,6 +16,36 @@
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="circuit.svg">
+  <style
+     id="escher-svg-css">
+    @import 'svg-stylesheet.css';
+
+.valve {
+	fill:#ff0000;
+	fill-opacity:1;
+	stroke:none;
+}
+
+.gateExternal {
+	fill:#e7e7e7;
+	fill-opacity:1;
+	stroke:#7ad23e;
+	stroke-width:2;
+}
+
+.link {
+	vector-effect:none;
+	fill:none;
+	stroke:#a141d0;
+	stroke-width:0.666;
+	stroke-linecap:butt;
+	stroke-linejoin:miter;
+	stroke-miterlimit:4;
+	marker-start:url(#DotM);
+	marker-end:url(#marker1433)
+}
+
+  </style>
   <defs
      id="defs2">
     <marker
@@ -355,21 +385,24 @@
          cy="86.845245"
          cx="98.273804"
          id="gate1"
-         style="opacity:1;vector-effect:none;fill:#e7e7e7;fill-opacity:1;fill-rule:nonzero;stroke:#7ad23e;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="    "
+         class="gateExternal" />
       <circle
          inkscape:label="gate2"
          r="17.008928"
          cy="218.00298"
          cx="119.06249"
          id="gate2"
-         style="opacity:1;vector-effect:none;fill:#e7e7e7;fill-opacity:1;fill-rule:nonzero;stroke:#7ad23e;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="    "
+         class="gateExternal" />
       <circle
          inkscape:label="gate3"
          r="37.797619"
          cy="146.94344"
          cx="213.55655"
          id="gate3"
-         style="opacity:1;vector-effect:none;fill:#e7e7e7;fill-opacity:1;fill-rule:nonzero;stroke:#7ad23e;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="gateExternal" />
     </g>
     <g
        id="valves"
@@ -381,112 +414,128 @@
          cy="154.53789"
          cx="176.52974"
          id="gate3-valve6"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate3-valve5"
          r="3.4410954"
          cy="159.92583"
          cx="249.05469"
          id="gate3-valve5"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate3-valve4"
          r="3.4410954"
          cy="141.04105"
          cx="250.89047"
          id="gate3-valve4"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate3-valve3"
          r="3.4410954"
          cy="131.20689"
          cx="179.19057"
          id="gate3-valve3"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate3-valve2"
          r="3.4410954"
          cy="175.84776"
          cx="189.20085"
          id="gate3-valve2"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate3-valve1"
          r="3.4410954"
          cy="114.88909"
          cx="193.5271"
          id="gate3-valve1"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate2-valve3"
          r="3.4410954"
          cy="234.80331"
          cx="121.71811"
          id="gate2-valve3"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate2-valve2"
          r="3.4410954"
          cy="228.89284"
          cx="105.99672"
          id="gate2-valve2"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate2-valve1"
          r="3.4410954"
          cy="209.49081"
          cx="133.78821"
          id="gate2-valve1"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate1-valve3"
          r="3.4410954"
          cy="101.65903"
          cx="103.98058"
          id="gate1-valve3"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate1-valve2"
          r="3.4410954"
          cy="88.283119"
          cx="114.08355"
          id="gate1-valve2"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="gate1-valve1"
          r="3.4410954"
          cy="77.494537"
          cx="85.444931"
          id="gate1-valve1"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="super-valve-3"
          r="3.4410954"
          cy="262.53009"
          cx="207.96609"
          id="super-valve-3"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="super-valve-2"
          r="3.4410954"
          cy="255.48688"
          cx="78.647102"
          id="super-valve-2"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="super-valve-0"
          r="3.4410951"
          cy="55.445229"
          cx="56.27927"
          id="super-valve-0"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
       <circle
          inkscape:label="super-valve-1"
          r="3.4410954"
          cy="68.26506"
          cx="255.84375"
          id="super-valve-1"
-         style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style=""
+         class="valve" />
     </g>
     <g
        id="links"
@@ -497,49 +546,56 @@
          inkscape:connector-curvature="0"
          id="link7"
          d="M 56.279269,55.445227 85.44493,77.494536"
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#a141d0;stroke-width:0.66500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#DotM);marker-end:url(#marker1433)" />
+         style=""
+         class="link" />
       <path
          inkscape:label="link6"
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="link6"
          d="M 78.647102,255.48688 105.99672,228.89284"
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#a141d0;stroke-width:0.66500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#DotM-6);marker-end:url(#marker1433-6)" />
+         style=""
+         class="link" />
       <path
          inkscape:label="link5"
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="link5"
          d="m 121.71811,234.80331 c 3.55843,29.82707 75.53959,0.92732 86.24798,27.72678"
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#a141d0;stroke-width:0.66500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#DotM-3);marker-end:url(#marker1433-5)" />
+         style=""
+         class="link" />
       <path
          inkscape:label="link4"
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="link4"
          d="m 133.78821,209.49081 55.41264,-33.64305"
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#a141d0;stroke-width:0.66500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#DotM-2);marker-end:url(#marker1433-9)" />
+         style=""
+         class="link" />
       <path
          inkscape:label="link3"
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="link3"
          d="m 250.89047,141.04105 c 29.52451,-3.36736 34.08258,24.00354 -1.83578,18.88478"
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#a141d0;stroke-width:0.66500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#DotM-61);marker-end:url(#marker1433-3)" />
+         style=""
+         class="link" />
       <path
          inkscape:label="link2"
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="link2"
          d="m 103.98058,101.65903 c 28.92776,23.40102 43.45937,26.61249 75.20998,29.54786"
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#a141d0;stroke-width:0.66500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#DotM-7);marker-end:url(#marker1433-50)" />
+         style=""
+         class="link" />
       <path
          inkscape:label="link1"
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="link1"
          d="m 114.08355,88.283119 c 38.47642,1.841382 55.21343,4.107453 79.44355,26.605971"
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#a141d0;stroke-width:0.66500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#DotM-1);marker-end:url(#marker1433-63)" />
+         style=""
+         class="link" />
     </g>
     <g
        id="labels-parts"

@@ -1,0 +1,25 @@
+
+.valve {
+	fill:#ff0000;
+	fill-opacity:1;
+	stroke:none;
+}
+
+.gateExternal {
+	fill:#e7e7e7;
+	fill-opacity:1;
+	stroke:#7ad23e;
+	stroke-width:2;
+}
+
+.link {
+	vector-effect:none;
+	fill:none;
+	stroke:#a141d0;
+	stroke-width:0.666;
+	stroke-linecap:butt;
+	stroke-linejoin:miter;
+	stroke-miterlimit:4;
+	marker-start:url(#DotM);
+	marker-end:url(#marker1433)
+}
