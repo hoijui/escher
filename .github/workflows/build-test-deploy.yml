@@ -29,8 +29,7 @@ jobs:
         fi
 
     - name: Build Escher from Go sources
-      #run: go build -v .
-      run: make
+      run: go build -v .
 
     - name: Run Go & Escher Tests
       run: scripts/tests.sh
