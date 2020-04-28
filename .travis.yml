@@ -21,7 +21,7 @@ matrix:
 go_import_path: github.com/hoijui/escher
 
 before_install:
-- if [ "$ONCE" = "true" ]; then  sudo apt-get -y install inkscape; fi
+- if [ "$ONCE" = "true" ]; then sudo apt-get -y install inkscape; fi
 
 install:
 - go get -v github.com/hoijui/circuit/client
