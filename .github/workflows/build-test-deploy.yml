@@ -1,0 +1,51 @@
+name: Build, Test & Deploy Pages
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.13
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.13
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Get Go dependencies
+      run: |
+        go get -v -t -d ./...
+        if [ -f Gopkg.toml ]; then
+            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+            dep ensure
+        fi
+
+    - name: Build Escher from Go sources
+      #run: go build -v .
+      run: make
+
+    - name: Run Go & Escher Tests
+      run: scripts/tests.sh
+
+    - name: Install Handbook dependencies
+      run: |
+        sudo apt-get -y install inkscape
+
+    - name: Build the Handbook
+      run: |
+        mkdir -p public
+        scripts/build_handbook.sh ./public
+
+    - name: Deploy to the gh-pages branch
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
