@@ -22,8 +22,7 @@ repo_root="$(cd $script_dir; cd ..; pwd)"
 src_dir="$repo_root/src"
 tutorials_dir="$src_dir/tutorial"
 
-which escher > /dev/null
-if [ $? -ne 0 ]
+if ! which escher > /dev/null
 then
 	>&2 echo "Error: Could not find 'escher' in PATH"
 	exit 1

@@ -21,8 +21,7 @@ repo_root="$(cd $script_dir; cd ..; pwd)"
 # under the same relative path within the escher repo.
 src_dir="$repo_root/src"
 
-which escher > /dev/null
-if [ $? -ne 0 ]
+if ! which escher > /dev/null
 then
 	>&2 echo "Error: Could not find 'escher' in PATH"
 	exit 1

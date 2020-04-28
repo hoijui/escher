@@ -27,6 +27,12 @@ svg_hide="$script_dir/svg_hide_group.awk"
 src_dir="$escher_src_dir/handbook"
 export ESCHER="$escher_src_dir"
 
+if ! which escher > /dev/null
+then
+	>&2 echo "Error: Could not find 'escher' in PATH"
+	exit 1
+fi
+
 rel_out_dir="${1:-}"
 if [ "$rel_out_dir" = "" ]
 then
