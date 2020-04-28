@@ -115,6 +115,7 @@ done
 
 echo
 echo "Building the handbook (using escher) ..."
+cd "$out_dir"
 escher "*handbook.main"
 
 echo
