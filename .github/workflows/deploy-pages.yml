@@ -39,18 +39,15 @@ jobs:
       run: go install -v "$MAIN_SRC_DIR"
 
     - name: Install Handbook dependencies
-      if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
       run: |
         sudo apt-get -y install inkscape
 
     - name: Build the Handbook
-      if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
       run: |
         mkdir -p public
         scripts/build_handbook.sh ./public
 
     - name: Deploy to the gh-pages branch
-      if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
