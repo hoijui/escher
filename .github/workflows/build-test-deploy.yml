@@ -8,6 +8,8 @@ jobs:
 
   build:
     name: Build & Test
+    env:
+      MAIN_SRC_DIR: .
     runs-on: ubuntu-latest
     steps:
 
@@ -28,11 +30,11 @@ jobs:
             dep ensure
         fi
 
-    - name: Build Escher from Go sources
-      run: go build -v .
+    - name: Build from Go sources
+      run: go build -v "$MAIN_SRC_DIR"
 
-    - name: Install _escher_ into PATH
-      run: go install -v .
+    - name: Install the main executable into PATH
+      run: go install -v "$MAIN_SRC_DIR"
 
     - name: Run Go & Escher Tests
       run: scripts/tests.sh
