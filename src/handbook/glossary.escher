@@ -473,7 +473,5 @@ SomeCircuit {
 	</tr>
 </table>
 
-{{.Gate.Ticker}}
-
 	`
 }
