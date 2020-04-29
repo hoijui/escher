@@ -1,17 +1,21 @@
-name: Build, Test & Deploy Pages
+name: Deploy Pages
 
-on: [push, pull_request]
+on:
+  push:
+    branches: master
+    paths:
+    - 'docs/**'
 
 jobs:
 
   build:
-    name: Build & Test
+    name: Build & Deploy Pages
     env:
       MAIN_SRC_DIR: .
     runs-on: ubuntu-latest
     steps:
 
-    - name: Set up Go 1.13
+    - name: Set up Go
       uses: actions/setup-go@v2
       with:
         go-version: ^1.13.1
@@ -34,30 +38,21 @@ jobs:
     - name: Install the main executable into PATH
       run: go install -v "$MAIN_SRC_DIR"
 
-    - name: Run Go & Escher Tests
-      run: scripts/tests.sh
-
-  deploy-pages:
-    name: Deploy Pages
-    needs: build
-    runs-on: ubuntu-latest
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
-    steps:
-
     - name: Install Handbook dependencies
+      if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
       run: |
         sudo apt-get -y install inkscape
 
-    - name: Check out code
-      uses: actions/checkout@v2
-
     - name: Build the Handbook
+      if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
       run: |
         mkdir -p public
         scripts/build_handbook.sh ./public
 
     - name: Deploy to the gh-pages branch
+      if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
+
