@@ -7,7 +7,7 @@ jobs:
   build:
     name: Build & Test
     env:
-      MAIN_SRC_DIR: .
+      MAIN_SRC_DIR: ./main/
     runs-on: ubuntu-latest
     steps:
 
