@@ -6,3 +6,6 @@ TODO.pdf
 
 # Main binary
 /escher
+
+# Handbook build dir
+/public/
