@@ -1,5 +1,8 @@
 
 BuildBasisEscherPage {
+	s *e.Show
+	s:building = "Page: BasisEscher ..."
+
 	wf *io.WriteFile
 	wf:Content = *BasisEscherPage
 	wf:Name = "basis-escher.html"

@@ -1,5 +1,8 @@
 
 BuildBasisPage {
+	s *e.Show
+	s:building = "Page: Basis ..."
+
 	wf *io.WriteFile
 	wf:Content = *BasisPage
 	wf:Name = "basis.html"

@@ -1,5 +1,8 @@
 
 BuildInstallPage {
+	s *e.Show
+	s:building = "Page: Install ..."
+
 	wf *io.WriteFile
 	wf:Content = *InstallPage
 	wf:Name = "install.html"

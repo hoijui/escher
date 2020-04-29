@@ -1,5 +1,8 @@
 
 BuildGlossaryPage {
+	s *e.Show
+	s:building = "Page: Glossary ..."
+
 	wf *io.WriteFile
 	wf:Content = *GlossaryPage
 	wf:Name = "glossary.html"

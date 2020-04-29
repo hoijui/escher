@@ -1,5 +1,8 @@
 
 BuildProgramPage {
+	s *e.Show
+	s:building = "Page: Program ..."
+
 	wf *io.WriteFile
 	wf:Content = *ProgramPage
 	wf:Name = "program.html"

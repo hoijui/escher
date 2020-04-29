@@ -1,5 +1,8 @@
 
 BuildBasisFlowPage {
+	s *e.Show
+	s:building = "Page: BasisFlow ..."
+
 	wf *io.WriteFile
 	wf:Content = *BasisFlowPage
 	wf:Name = "basis-flow.html"

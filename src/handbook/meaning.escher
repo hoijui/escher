@@ -1,5 +1,8 @@
 
 BuildMeaningPage {
+	s *e.Show
+	s:building = "Page: Meaning ..."
+
 	wf *io.WriteFile
 	wf:Content = *MeaningPage
 	wf:Name = "meaning.html"

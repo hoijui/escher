@@ -1,5 +1,8 @@
 
 BuildBasisOSPage {
+	s *e.Show
+	s:building = "Page: BasisOS ..."
+
 	wf *io.WriteFile
 	wf:Content = *BasisOSPage
 	wf:Name = "basis-os.html"

@@ -1,5 +1,8 @@
 
 BuildCommandPage {
+	s *e.Show
+	s:building = "Page: Command ..."
+
 	wf *io.WriteFile
 	wf:Content = *CommandPage
 	wf:Name = "cmd.html"

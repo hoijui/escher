@@ -1,5 +1,8 @@
 
 BuildCloudPage {
+	s *e.Show
+	s:building = "Page: Cloud ..."
+
 	wf *io.WriteFile
 	wf:Content = *CloudPage
 	wf:Name = "cloud.html"

@@ -1,5 +1,8 @@
 
 BuildSyntaxPage {
+	s *e.Show
+	s:building = "Page: Syntax ..."
+
 	wf *io.WriteFile
 	wf:Content = *SyntaxPage
 	wf:Name = "syntax.html"

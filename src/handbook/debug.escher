@@ -1,5 +1,8 @@
 
 BuildDebugPage {
+	s *e.Show
+	s:building = "Page: Debug ..."
+
 	wf *io.WriteFile
 	wf:Content = *DebugPage
 	wf:Name = "debug.html"

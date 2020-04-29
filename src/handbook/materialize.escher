@@ -1,5 +1,8 @@
 
 BuildMaterializePage {
+	s *e.Show
+	s:building = "Page: Materialize ..."
+
 	file *io.WriteFile
 	file:Content = *MaterializePage
 	file:Name = "m.html"

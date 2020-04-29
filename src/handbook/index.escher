@@ -1,5 +1,8 @@
 
 BuildIndexPage {
+	s *e.Show
+	s:building = "Page: Index ..."
+
 	wf *io.WriteFile
 	wf:Content = *IndexPage
 	wf:Name = "index.html"

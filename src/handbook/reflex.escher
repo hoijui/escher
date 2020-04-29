@@ -1,5 +1,8 @@
 
 BuildReflexPage {
+	s *e.Show
+	s:building = "Page: Reflex ..."
+
 	wf *io.WriteFile
 	wf:Content = *ReflexPage
 	wf:Name = "reflex.html"
