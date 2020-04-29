@@ -1,8 +1,6 @@
 name: Build, Test & Deploy Pages
 
-on:
-  push:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
 
@@ -39,9 +37,19 @@ jobs:
     - name: Run Go & Escher Tests
       run: scripts/tests.sh
 
+  deploy-pages:
+    name: Deploy Pages
+    needs: build
+    runs-on: ubuntu-latest
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
+    steps:
+
     - name: Install Handbook dependencies
       run: |
         sudo apt-get -y install inkscape
+
+    - name: Check out code
+      uses: actions/checkout@v2
 
     - name: Build the Handbook
       run: |
