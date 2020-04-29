@@ -14,7 +14,7 @@ import (
 	"strconv"
 )
 
-// AsInt accepts an int or float64 value and converts it to an int value.
+// AsInt accepts a value of one of the types [int, float64, complex128, string], and converts it to a value of type int.
 func AsInt(v interface{}) int {
 	switch t := v.(type) {
 	case int:
@@ -43,6 +43,7 @@ func AsInt(v interface{}) int {
 	panic(4)
 }
 
+// AsString accepts a value of one of the types [[]byte, string, byteBuffer, ioReader], and converts it to a value of type string.
 func AsString(v interface{}) string {
 	switch t := v.(type) {
 	case []byte:
