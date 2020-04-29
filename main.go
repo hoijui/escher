@@ -73,7 +73,7 @@ func main() {
 	if flagMain != "" {
 		verb := see.ParseVerb(flagMain)
 		if cir.Circuit(verb).IsNil() {
-			fmt.Fprintf(os.Stderr, "verb not recognized\n")
+			fmt.Fprintf(os.Stderr, "verb '%v' not recognized\n", verb)
 			os.Exit(1)
 		}
 		exec(index, cir.Circuit(verb), false)
