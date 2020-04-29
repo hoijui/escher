@@ -2,7 +2,7 @@ name: Deploy Pages
 
 on:
   push:
-    branches: master
+    branches: [ master ]
     paths:
     - 'src/handbook/**'
 
