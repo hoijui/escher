@@ -1,6 +1,6 @@
 # [Escher - A language for programming in pure metaphors](https://hoijui.github.io/escher/)
 
-[![Build Status](https://travis-ci.org/hoijui/escher.svg?branch=master)](https://travis-ci.org/hoijui/escher)
+[![Build Status](https://github.com/hoijui/escher/workflows/Build%20&%20Test/badge.svg)](https://github.com/hoijui/escher/actions?query=workflow%3A%22Build+%26+Test%22)
 [![GoDoc](https://godoc.org/github.com/hoijui/escher?status.png)](https://godoc.org/github.com/hoijui/escher)
 [![Go Report Card](https://goreportcard.com/badge/github.com/hoijui/escher)](https://goreportcard.com/report/github.com/hoijui/escher)
 
