@@ -84,8 +84,10 @@ func main() {
 		chunk, err := r.Read()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "end of session (%v)\n", err)
-			if err == io.EOF || err == io.ErrUnexpectedEOF {
+			if err == io.EOF {
 				break
+			} else if err == io.ErrUnexpectedEOF {
+				fatalf("end of session (%v)\n", err)
 			}
 		}
 		src := a.NewSrcString(string(chunk))
