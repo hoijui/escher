@@ -1,9 +1,9 @@
 
 BuildBasisEscherPage {
-		wf *io.WriteFile
-		wf:Content = *BasisEscherPage
-		wf:Name = "basis-escher.html"
-		: = wf:Ready
+	wf *io.WriteFile
+	wf:Content = *BasisEscherPage
+	wf:Name = "basis-escher.html"
+	: = wf:Ready
 }
 
 BasisEscherPage {
@@ -75,5 +75,5 @@ program relative to the given index and will return the residue to the valve <co
 <p>using the same index that was used to materialize the parent program, as acquired from
 the <code>*e.Index</code> reflex in the parent program.
 
-`
+	`
 }

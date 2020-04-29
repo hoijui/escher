@@ -1,9 +1,9 @@
 
 BuildBasisPage {
-		wf *io.WriteFile
-		wf:Content = *BasisPage
-		wf:Name = "basis.html"
-		: = wf:Ready
+	wf *io.WriteFile
+	wf:Content = *BasisPage
+	wf:Name = "basis.html"
+	: = wf:Ready
 }
 
 BasisPage {
@@ -68,5 +68,5 @@ This programming pattern is enabled by the
 <a href="https://github.com/hoijui/escher/tree/master/faculty/escher"><code>escher</code></a>
 faculty, which among other things offers reflexes that materialize program circuits.
 
-`
+	`
 }

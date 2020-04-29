@@ -1,9 +1,9 @@
 
 BuildBasisFlowPage {
-		wf *io.WriteFile
-		wf:Content = *BasisFlowPage
-		wf:Name = "basis-flow.html"
-		: = wf:Ready
+	wf *io.WriteFile
+	wf:Content = *BasisFlowPage
+	wf:Name = "basis-flow.html"
+	: = wf:Ready
 }
 
 BasisFlowPage {
@@ -131,5 +131,5 @@ on valves <code>x</code> and <code>y</code>, respectively. Then the value
 
 <p>will be sent to and printed by the <code>*e.Show</code> reflex.
 
-`
+	`
 }

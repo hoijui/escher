@@ -1,9 +1,9 @@
 
 BuildProgramPage {
-		wf *io.WriteFile
-		wf:Content = *ProgramPage
-		wf:Name = "program.html"
-		: = wf:Ready
+	wf *io.WriteFile
+	wf:Content = *ProgramPage
+	wf:Name = "program.html"
+	: = wf:Ready
 }
 
 ProgramFigures {
@@ -292,5 +292,5 @@ we can materialize it from the command-line like this:
 escher -src /src/ "*app.Main"
 </pre>
 
-`
+	`
 }

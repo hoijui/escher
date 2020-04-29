@@ -1,9 +1,9 @@
 
 BuildCloudPage {
-		wf *io.WriteFile
-		wf:Content = *CloudPage
-		wf:Name = "cloud.html"
-		: = wf:Ready
+	wf *io.WriteFile
+	wf:Content = *CloudPage
+	wf:Name = "cloud.html"
+	: = wf:Ready
 }
 
 CloudPage {
@@ -507,5 +507,5 @@ For instance, if we want to verify that the endpoint <code>host2.database</code>
 we simply consider the Circuit path list, obtained with <code>circuit ls /...</code>,
 and look for the glob pattern <code>/*/host2/database/service</code>.
 
-`
+	`
 }

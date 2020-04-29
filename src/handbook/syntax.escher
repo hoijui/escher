@@ -1,9 +1,9 @@
 
 BuildSyntaxPage {
-		wf *io.WriteFile
-		wf:Content = *SyntaxPage
-		wf:Name = "syntax.html"
-		: = wf:Ready
+	wf *io.WriteFile
+	wf:Content = *SyntaxPage
+	wf:Name = "syntax.html"
+	: = wf:Ready
 }
 
 SyntaxPage {
@@ -428,5 +428,5 @@ This will expand to:
 	0: = 1:
 </pre>
 
-		`
+	`
 }

@@ -1,9 +1,9 @@
 
 BuildGlossaryPage {
-		wf *io.WriteFile
-		wf:Content = *GlossaryPage
-		wf:Name = "glossary.html"
-		: = wf:Ready
+	wf *io.WriteFile
+	wf:Content = *GlossaryPage
+	wf:Name = "glossary.html"
+	: = wf:Ready
 }
 
 GlossaryPage {
@@ -472,5 +472,5 @@ SomeCircuit {
 
 {{.Gate.Ticker}}
 
-`
+	`
 }

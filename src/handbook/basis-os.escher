@@ -1,9 +1,9 @@
 
 BuildBasisOSPage {
-		wf *io.WriteFile
-		wf:Content = *BasisOSPage
-		wf:Name = "basis-os.html"
-		: = wf:Ready
+	wf *io.WriteFile
+	wf:Content = *BasisOSPage
+	wf:Name = "basis-os.html"
+	: = wf:Ready
 }
 
 BasisOSPage {
@@ -104,5 +104,5 @@ In this example, standard output and error are forwarded while standard input is
 ignores primitive values (integers, floats, etc.), whereas it closes <code>io.Closer</code>
 objects and it drains <code>io.Reader</code> objects.
 
-`
+	`
 }

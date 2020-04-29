@@ -1,9 +1,9 @@
 
 BuildDebugPage {
-		wf *io.WriteFile
-		wf:Content = *DebugPage
-		wf:Name = "debug.html"
-		: = wf:Ready
+	wf *io.WriteFile
+	wf:Content = *DebugPage
+	wf:Name = "debug.html"
+	: = wf:Ready
 }
 
 DebugPage {
@@ -176,5 +176,5 @@ from <code>source</code> to <code>sink</code>, like so:
 }
 </pre>
 
-`
+	`
 }
