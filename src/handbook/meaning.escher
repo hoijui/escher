@@ -24,7 +24,7 @@ MeaningPage {
 	t:Data = f:
 	t:Form = `
 
-<h1>Interpretations of circuits</h1>
+<h1 id="circuit">Interpretations of circuits</h1>
 
 <p>A circuit in Escher is a generic data abstraction much like a structure is in JavaScript or Go.
 When thinking and programming in Escher, circuits will have a meaning
