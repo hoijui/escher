@@ -86,13 +86,14 @@ func main() {
 	}
 	// standard loop
 	r := kio.NewChunkReader(os.Stdin)
-	for {
+	cont := true
+	for cont {
 		chunk, err := r.Read()
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "end of session (%v)\n", err)
-			if err == io.EOF {
-				break
-			} else if err == io.ErrUnexpectedEOF {
+			if err == io.EOF || err == io.ErrUnexpectedEOF {
+				// This is normal behavior; simply denotes the end of input
+				cont = false
+			} else {
 				fatalf("end of session (%v)\n", err)
 			}
 		}
