@@ -78,41 +78,41 @@ The following Escher trace will be printed:
 BASIS(:)
 DIRECTIVE(:) *e.Breakpoint/*e.Breakpoint
 CIRCUIT() {
-		0 *e.Breakpoint
-		1 1
-		0: = 1:
+	0 *e.Breakpoint
+	1 1
+	0: = 1:
 }
 MATERIALIZE() {
-		0 *e.Breakpoint
-		1 1
-		0: = 1:
+	0 *e.Breakpoint
+	1 1
+	0: = 1:
 }
 BASIS(:Residue :View)
 DIRECTIVE(:Residue :View) *e.Materialize/*e.Materialize
 CIRCUIT(:Index :Program :Residue) {
-		x *e.Materialize
-		y *e.Fork
-		:Residue = x:Residue
-		:Index = y:Index
-		:Program = y:Program
-		x:View = y:
+	x *e.Materialize
+	y *e.Fork
+	:Residue = x:Residue
+	:Index = y:Index
+	:Program = y:Program
+	x:View = y:
 }
 DIRECTIVE(:Index :Program :Residue) *e.QuickMaterialize/*e.QuickMaterialize
 CIRCUIT() {
-		m *e.QuickMaterialize
-		0 *e.Show
-		1 "Parent circuit"
-		2 *e.Ignore
-		3 *e.Index
-		4 {
-				0 *e.Breakpoint
-				1 1
-				0: = 1:
-		}
-		0: = 1:
-		m:Program = 4:
-		m:Residue = 2:
-		m:Index = 3:
+	m *e.QuickMaterialize
+	0 *e.Show
+	1 "Parent circuit"
+	2 *e.Ignore
+	3 *e.Index
+	4 {
+			0 *e.Breakpoint
+			1 1
+			0: = 1:
+	}
+	0: = 1:
+	m:Program = 4:
+	m:Residue = 2:
+	m:Index = 3:
 }
 DIRECTIVE() *tutorial.Debug/*tutorial.Debug
 MATERIALIZE() *tutorial.Debug
