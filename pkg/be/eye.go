@@ -38,8 +38,8 @@ func NewEye(given Reflex) (eye *Eye) {
 }
 
 func (eye *Eye) Connect(given Reflex, cog EyeCognizer) {
-	for vlv_, syn_ := range given {
-		vlv, syn := vlv_, syn_
+	for vlvLoop, synLoop := range given {
+		vlv, syn := vlvLoop, synLoop
 		go func() {
 			eye.show[vlv] <- syn.Connect(
 				func(w interface{}) {
