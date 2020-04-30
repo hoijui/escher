@@ -65,6 +65,9 @@ func (ssn *Session) recv() (id, pay string) {
 func (ssn *Session) loop() {
 	defer func() {
 		recover() // Kill the loop quietly (on carrier death) and cleanup
+		if r := recover(); r != nil {
+			log.Println("Recovered in loop", r)
+		}
 		ssn.clunk()
 	}()
 	for {

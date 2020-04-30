@@ -10,6 +10,7 @@ import (
 	"bytes"
 	"io"
 	"io/ioutil"
+	"log"
 
 	"github.com/hoijui/escher/pkg/be"
 	cir "github.com/hoijui/escher/pkg/circuit"
@@ -37,17 +38,21 @@ func (h *WriteFile) CognizeName(eye *be.Eye, v interface{}) {
 
 func (h *WriteFile) CognizeContent(eye *be.Eye, v interface{}) {
 	<-h.named
+	var err error
 	switch t := v.(type) {
 	case string:
-		ioutil.WriteFile(h.name, []byte(t), 0644)
+		err = ioutil.WriteFile(h.name, []byte(t), 0644)
 	case []byte:
-		ioutil.WriteFile(h.name, t, 0644)
+		err = ioutil.WriteFile(h.name, t, 0644)
 	case io.Reader:
 		var w bytes.Buffer
 		io.Copy(&w, t)
-		ioutil.WriteFile(h.name, w.Bytes(), 0644)
+		err = ioutil.WriteFile(h.name, w.Bytes(), 0644)
 	default:
 		panic("eh?")
+	}
+	if err != nil {
+		log.Fatal("Failed to cognize content", err)
 	}
 	eye.Show("Ready", 1)
 }

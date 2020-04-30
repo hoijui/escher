@@ -10,6 +10,7 @@ package text
 import (
 	"bytes"
 	"io"
+	"log"
 
 	"github.com/hoijui/escher/pkg/be"
 	cir "github.com/hoijui/escher/pkg/circuit"
@@ -48,7 +49,10 @@ func flatten(v interface{}) string {
 		return string(t)
 	case io.Reader:
 		var w bytes.Buffer
-		io.Copy(&w, t)
+		_, err := io.Copy(&w, t)
+		if err != nil {
+			log.Fatalf("Failed to flatten io.Reader into a string (%v)", err)
+		}
 		return w.String()
 	case nil:
 		return ""

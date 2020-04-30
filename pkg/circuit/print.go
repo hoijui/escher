@@ -10,6 +10,7 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"log"
 
 	"github.com/hoijui/escher/pkg/a"
 )
@@ -28,15 +29,22 @@ func (u Circuit) String() string {
 
 func (u Circuit) Print(w io.Writer, f Format) {
 	if u.IsNil() {
-		io.WriteString(w, "<nil>")
+		_, err := io.WriteString(w, "<nil>")
+		if err != nil {
+			log.Fatalf("Failed to print nil circuit (%v)", err)
+		}
 		return
-	}
-	if len(u.Gate)+len(u.Flow) == 0 {
-		io.WriteString(w, "{}")
+	} else if (len(u.Gate) + len(u.Flow)) == 0 {
+		_, err := io.WriteString(w, "{}")
+		if err != nil {
+			log.Fatalf("Failed to print empty circtuit (%v)", err)
+		}
 		return
-	}
-	if f.Recurse == 0 {
-		io.WriteString(w, "{…}")
+	} else if f.Recurse == 0 {
+		_, err := io.WriteString(w, "{…}")
+		if err != nil {
+			log.Fatalf("Failed to print placeholder circuit (%v)", err)
+		}
 		return
 	}
 	io.WriteString(w, "{\n")

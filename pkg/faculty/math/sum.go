@@ -7,6 +7,7 @@
 package math
 
 import (
+	"log"
 	"sync"
 
 	"github.com/hoijui/escher/pkg/be"
@@ -61,14 +62,20 @@ func (s *IntSum) fire(eye *be.Eye, v1, v2 string, u1, u2 int) {
 	wg.Add(2)
 	go func() {
 		defer func() {
-			recover()
+			err := recover()
+			if err != nil {
+				log.Fatalf("Failed to recover in math.sum.fire (%d) (%v)", 1, err)
+			}
 		}()
 		defer wg.Done()
 		eye.Show(v1, u1)
 	}()
 	go func() {
 		defer func() {
-			recover()
+			err := recover()
+			if err != nil {
+				log.Fatalf("Failed to recover in math.sum.fire (%d) (%v)", 2, err)
+			}
 		}()
 		defer wg.Done()
 		eye.Show(v2, u2)

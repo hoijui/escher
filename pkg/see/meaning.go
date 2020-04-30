@@ -9,6 +9,7 @@ package see
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 
@@ -167,14 +168,23 @@ func DelimitBackquoteString(src *a.Src) (string, bool) {
 			q = 1
 		case 1:
 			if r != '`' { // previous backquote was closing
-				buf.UnreadRune()
+				err := buf.UnreadRune()
+				if err != nil {
+					log.Fatalf("Failed to unread backquote in DelimitBackquoteString (%v)", err)
+				}
 				return src.SkipString(src.Len() - buf.Len()), true
 			}
 			q = 2
 		case 2:
 			if r != '`' { // two consecutive backquotes and then different character
-				buf.UnreadRune()
-				buf.UnreadRune()
+				err1 := buf.UnreadRune()
+				if err1 != nil {
+					log.Fatalf("Failed to unread the first backquote in DelimitBackquoteString (%v)", err1)
+				}
+				err2 := buf.UnreadRune()
+				if err2 != nil {
+					log.Fatalf("Failed to unread the first backquote in DelimitBackquoteString (%v)", err2)
+				}
 				return src.SkipString(src.Len() - buf.Len()), true
 			}
 			q = 0

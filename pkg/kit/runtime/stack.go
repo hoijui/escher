@@ -8,12 +8,16 @@ package runtime
 
 import (
 	"bytes"
+	"log"
 	"runtime/pprof"
 )
 
 func PrintStack() {
 	var w bytes.Buffer
 	p := pprof.Lookup("goroutine")
-	p.WriteTo(&w, 1)
+	err := p.WriteTo(&w, 1)
+	if err != nil {
+		log.Fatalf("Failed to PrintStack (%v)", err)
+	}
 	println(w.String())
 }

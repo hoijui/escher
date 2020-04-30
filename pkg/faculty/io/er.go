@@ -38,7 +38,10 @@ func (x *Writer) OverCognize(eye *be.Eye, _ cir.Name, value interface{}) {
 	case io.Reader:
 		go CopyClose(x.WriteCloser, t, false, true)
 	case string:
-		x.WriteCloser.Write([]byte(t))
+		_, err := x.WriteCloser.Write([]byte(t))
+		if err != nil {
+			log.Fatalf("Failed to write string in OverCognize (%s)", err)
+		}
 	default:
 		be.Panicf("unexpected type at writer origin (%T)", t)
 	}
@@ -78,7 +81,10 @@ func CopyClose(w io.Writer, r io.Reader, closeWriter, closeReader bool) {
 		log.Printf("draining problem (%s)", err)
 	}
 	if tt, ok := w.(*os.File); ok {
-		tt.Sync()
+		err := tt.Sync()
+		if err != nil {
+			log.Fatalf("Failed to sync on CopyClose (%s)", err)
+		}
 	}
 	if closeReader {
 		if tt, ok := r.(io.Closer); ok {
