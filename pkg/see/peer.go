@@ -7,8 +7,8 @@
 package see
 
 import (
-	"github.com/hoijui/escher/a"
-	cir "github.com/hoijui/escher/circuit"
+	"github.com/hoijui/escher/pkg/a"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 func SeePeer(src *a.Src) (n cir.Name, m cir.Value) {

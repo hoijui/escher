@@ -9,10 +9,10 @@ package escher
 import (
 	// "log"
 
-	"github.com/hoijui/escher/a"
-	"github.com/hoijui/escher/be"
-	"github.com/hoijui/escher/kit/plumb"
-	"github.com/hoijui/escher/see"
+	"github.com/hoijui/escher/pkg/a"
+	"github.com/hoijui/escher/pkg/be"
+	"github.com/hoijui/escher/pkg/kit/plumb"
+	"github.com/hoijui/escher/pkg/see"
 )
 
 type Parse struct{ be.Sparkless }

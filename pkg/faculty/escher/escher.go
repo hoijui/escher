@@ -9,8 +9,8 @@ package escher
 import (
 	// "fmt"
 
-	"github.com/hoijui/escher/be"
-	"github.com/hoijui/escher/faculty"
+	"github.com/hoijui/escher/pkg/be"
+	"github.com/hoijui/escher/pkg/faculty"
 )
 
 func init() {

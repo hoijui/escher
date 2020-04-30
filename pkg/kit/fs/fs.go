@@ -13,11 +13,11 @@ import (
 	"os"
 	"path"
 
-	"github.com/hoijui/escher/a"
-	"github.com/hoijui/escher/be"
-	cir "github.com/hoijui/escher/circuit"
-	fio "github.com/hoijui/escher/faculty/io"
-	"github.com/hoijui/escher/see"
+	"github.com/hoijui/escher/pkg/a"
+	"github.com/hoijui/escher/pkg/be"
+	cir "github.com/hoijui/escher/pkg/circuit"
+	fio "github.com/hoijui/escher/pkg/faculty/io"
+	"github.com/hoijui/escher/pkg/see"
 )
 
 func Load(filedir string) be.Index {

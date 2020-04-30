@@ -7,7 +7,7 @@
 package be
 
 import (
-	cir "github.com/hoijui/escher/circuit"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 // Reflex is a bundle of not yet attached sense endpoints (synapses).

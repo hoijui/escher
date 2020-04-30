@@ -12,7 +12,7 @@ import (
 	"log"
 	"sync"
 
-	cir "github.com/hoijui/escher/circuit"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 type Union struct {

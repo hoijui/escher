@@ -14,8 +14,8 @@ import (
 	"time"
 
 	"github.com/hoijui/circuit/client"
-	"github.com/hoijui/escher/be"
-	"github.com/hoijui/escher/faculty"
+	"github.com/hoijui/escher/pkg/be"
+	"github.com/hoijui/escher/pkg/faculty"
 )
 
 // client *client.Client

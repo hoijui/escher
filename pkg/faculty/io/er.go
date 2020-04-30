@@ -11,9 +11,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/hoijui/escher/be"
-	cir "github.com/hoijui/escher/circuit"
-	kitio "github.com/hoijui/escher/kit/io"
+	"github.com/hoijui/escher/pkg/be"
+	cir "github.com/hoijui/escher/pkg/circuit"
+	kitio "github.com/hoijui/escher/pkg/kit/io"
 )
 
 // Writer is a gate that reads from values sent to it and writes to an underlying writer.

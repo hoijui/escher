@@ -10,10 +10,10 @@ package io
 import (
 	"io"
 
-	"github.com/hoijui/escher/be"
-	cir "github.com/hoijui/escher/circuit"
-	"github.com/hoijui/escher/faculty"
-	kio "github.com/hoijui/escher/kit/io"
+	"github.com/hoijui/escher/pkg/be"
+	cir "github.com/hoijui/escher/pkg/circuit"
+	"github.com/hoijui/escher/pkg/faculty"
+	kio "github.com/hoijui/escher/pkg/kit/io"
 )
 
 func init() {

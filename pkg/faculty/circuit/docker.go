@@ -13,9 +13,9 @@ import (
 	"sync"
 
 	dkr "github.com/hoijui/circuit/client/docker"
-	"github.com/hoijui/escher/be"
-	cir "github.com/hoijui/escher/circuit"
-	"github.com/hoijui/escher/kit/plumb"
+	"github.com/hoijui/escher/pkg/be"
+	cir "github.com/hoijui/escher/pkg/circuit"
+	"github.com/hoijui/escher/pkg/kit/plumb"
 )
 
 // Docker

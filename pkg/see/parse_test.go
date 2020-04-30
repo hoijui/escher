@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"testing"
 
-	. "github.com/hoijui/escher/a"
+	. "github.com/hoijui/escher/pkg/a"
 )
 
 var testValue = []string{

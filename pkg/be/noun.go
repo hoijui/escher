@@ -11,7 +11,7 @@ import (
 	"io"
 	"io/ioutil"
 
-	cir "github.com/hoijui/escher/circuit"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 // Sink

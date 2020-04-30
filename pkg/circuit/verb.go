@@ -12,7 +12,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/hoijui/escher/a"
+	"github.com/hoijui/escher/pkg/a"
 )
 
 // DefaultValve is the name of the default valve

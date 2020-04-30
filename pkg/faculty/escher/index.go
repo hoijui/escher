@@ -7,8 +7,8 @@
 package escher
 
 import (
-	"github.com/hoijui/escher/be"
-	cir "github.com/hoijui/escher/circuit"
+	"github.com/hoijui/escher/pkg/be"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 // The index gate is a design for a source reflex that returns a copy of the

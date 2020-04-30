@@ -11,8 +11,8 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/hoijui/escher/be"
-	cir "github.com/hoijui/escher/circuit"
+	"github.com/hoijui/escher/pkg/be"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 // Exec receives values from FilterAll and executes the included test circuits

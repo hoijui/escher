@@ -9,8 +9,8 @@ package see
 import (
 	"log"
 
-	"github.com/hoijui/escher/a"
-	cir "github.com/hoijui/escher/circuit"
+	"github.com/hoijui/escher/pkg/a"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 func ParseVerb(src string) (verb cir.Verb) {

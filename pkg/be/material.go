@@ -11,8 +11,8 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/hoijui/escher/circuit"
-	"github.com/hoijui/escher/kit/runtime"
+	"github.com/hoijui/escher/pkg/circuit"
+	"github.com/hoijui/escher/pkg/kit/runtime"
 )
 
 const cognizePrefix = "Cognize"

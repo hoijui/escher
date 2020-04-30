@@ -7,7 +7,7 @@
 package see
 
 import (
-	"github.com/hoijui/escher/a"
+	"github.com/hoijui/escher/pkg/a"
 )
 
 func SpaceNoNewline(src *a.Src) {

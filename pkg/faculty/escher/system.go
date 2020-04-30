@@ -10,8 +10,8 @@ import (
 	// "fmt"
 	// "log"
 
-	"github.com/hoijui/escher/be"
-	. "github.com/hoijui/escher/circuit"
+	"github.com/hoijui/escher/pkg/be"
+	. "github.com/hoijui/escher/pkg/circuit"
 )
 
 type System struct {

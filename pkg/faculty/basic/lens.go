@@ -9,8 +9,8 @@ package basic
 import (
 	"sync"
 
-	"github.com/hoijui/escher/be"
-	cir "github.com/hoijui/escher/circuit"
+	"github.com/hoijui/escher/pkg/be"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 type Lens struct {
