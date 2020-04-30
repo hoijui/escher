@@ -48,7 +48,7 @@ func IsVerb(v Value) bool {
 		return false
 	}
 	s, ok := u.StringOptionAt(Super)
-	return s == "*" || s == "@"
+	return ok && (s == "*" || s == "@")
 }
 
 func (a Verb) Address() (addr []Name) {
