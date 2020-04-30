@@ -51,23 +51,23 @@ func IsVerb(v Value) bool {
 	return ok && (s == "*" || s == "@")
 }
 
-func (a Verb) Address() (addr []Name) {
-	if Circuit(a).IsNil() {
+func (verb Verb) Address() (addr []Name) {
+	if Circuit(verb).IsNil() {
 		return nil
 	}
-	for _, i := range Circuit(a).SortedNumbers() {
-		addr = append(addr, a.Gate[i])
+	for _, i := range Circuit(verb).SortedNumbers() {
+		addr = append(addr, verb.Gate[i])
 	}
 	return
 }
 
-func (a Verb) Verb() Value {
-	return a.Gate[Super]
+func (verb Verb) Verb() Value {
+	return verb.Gate[Super]
 }
 
-func (a Verb) compactible() bool {
-	for _, n := range Circuit(a).SortedNumbers() {
-		s, ok := a.Gate[n].(string)
+func (verb Verb) compactible() bool {
+	for _, n := range Circuit(verb).SortedNumbers() {
+		s, ok := verb.Gate[n].(string)
 		if !ok {
 			return false
 		}
@@ -78,19 +78,19 @@ func (a Verb) compactible() bool {
 	return true
 }
 
-func (a Verb) Print(w io.Writer, f Format) {
-	if !a.compactible() {
-		Circuit(a).Print(w, f)
+func (verb Verb) Print(w io.Writer, f Format) {
+	if !verb.compactible() {
+		Circuit(verb).Print(w, f)
 		return
 	}
-	io.WriteString(w, a.summarize())
+	io.WriteString(w, verb.summarize())
 }
 
-func (a Verb) String() string {
-	if !a.compactible() {
-		return Circuit(a).String()
+func (verb Verb) String() string {
+	if !verb.compactible() {
+		return Circuit(verb).String()
 	}
-	return a.summarize()
+	return verb.summarize()
 }
 
 func (verb Verb) summarize() string {
