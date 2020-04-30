@@ -130,7 +130,7 @@ Nand {
 			XXX (A synonym for <a href="#link">Link</a>?)<br>
 			TODO Should probably be renamed to <b>Link</b><br>
 			See the go code of the circuit struct at
-			<a href="https://github.com/hoijui/escher/blob/master/circuit/circuit.go#L17">circuit/circuit.go</a>.
+			<a href="https://github.com/hoijui/escher/blob/master/pkg/circuit/circuit.go#L17">circuit/circuit.go</a>.
 		</td>
 	</tr>
 	<tr id="gate">

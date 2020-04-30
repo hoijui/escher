@@ -24,7 +24,7 @@ InstallPage {
 Fetching, building and installing Escher can then be accomplished with one command:
 
 <pre class="bash">
-go get github.com/hoijui/escher/escher
+go get github.com/hoijui/escher/cmd/escher
 </pre>
 
 <p>To check whether the installation succeeded, run:
