@@ -9,7 +9,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io"
+	//"io"
 	"os"
 	"path/filepath"
 	"plugin"
@@ -39,6 +39,8 @@ import (
 	_ "github.com/hoijui/escher/pkg/faculty/text"
 	_ "github.com/hoijui/escher/pkg/faculty/time"
 	_ "github.com/hoijui/escher/pkg/faculty/yield"
+
+	"github.com/ztrue/tracerr"
 )
 
 func main() {
@@ -157,6 +159,7 @@ func interpreter(main string, srcDir string, discover string, pluginDirs []strin
 			fmt.Fprintf(os.Stderr, "verb '%v' not recognized\n", verb)
 			os.Exit(1)
 		}
+		fmt.Fprintf(os.Stderr, "===\n%v\n===\n", index)
 		exec(index, cir.Circuit(verb), false)
 	}
 	// standard loop
@@ -165,13 +168,19 @@ func interpreter(main string, srcDir string, discover string, pluginDirs []strin
 	for cont {
 		chunk, err := r.Read()
 		if err != nil {
-			if err == io.EOF || err == io.ErrUnexpectedEOF {
-				// This is normal behavior; simply denotes the end of input
-				cont = false
-			} else {
-				fatalf("end of session (%v)\n", err)
-			}
+			//if err == io.EOF || err == io.ErrUnexpectedEOF {
+			//	// This is normal behavior; simply denotes the end of input
+			//	cont = false
+			//} else {
+			//fatalf("end of session\n%+v\n", err)
+			//panic(err)
+			tracerr.PrintSourceColor(err)
+			fatalf("end of session\n%+v\n", err)
+			//}
 		}
+		fmt.Fprintf(os.Stderr, "###########\n")
+		fmt.Fprintf(os.Stderr, "%v", string(chunk))
+		fmt.Fprintf(os.Stderr, "###########\n")
 		src := a.NewSrcString(string(chunk))
 		for src.Len() > 0 {
 			u := see.SeeChamber(src)
