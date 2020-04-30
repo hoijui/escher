@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
 
   build:
-    name: Build & Test
+    name: Build, Test & Run Tutorials
     env:
       MAIN_SRC_DIR: ./cmd/escher/
     runs-on: ubuntu-latest
@@ -36,4 +36,7 @@ jobs:
 
     - name: Run Go & Escher Tests
       run: scripts/tests.sh
+
+    - name: Run Escher Tutorials
+      run: scripts/tutorials.sh
 
