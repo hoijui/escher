@@ -22,12 +22,12 @@ BasisFlowPage {
 <h1>Information flow reflexes</h1>
 
 <p>We describe here two of the most commonly utilized information flow reflexes,
-<code>Fork</code> and <code>Star</code>. They are by no means the only
+<a href="#fork"><code>Fork</code></a> and <a href="#star"><code>Star</code></a>. They are by no means the only
 such, however they demonstrate the spirit of designing information flow
 control primitives. We encourage the reader to eventually review their short
 implementations to realize the huge variety of other possible designs.
 
-<h3>Star reflex</h3>
+<h3 id="star">Star reflex</h3>
 
 <p>(The implementation can be found in
 <a href="https://github.com/hoijui/escher/blob/master/faculty/basic/star.go">faculty/basic/star.go</a>.)
@@ -61,7 +61,7 @@ to valve <code>X</code> of gate <code>star</code>. The <code>star</code> gate wi
 to each of the valves <code>Y</code>, <code>Z</code> and <code>W</code> in parallel. Consequently
 it will be printed on the standard output three times by the receiving <code>*e.Show</code> reflexes.
 
-<h3>Fork reflex</h3>
+<h3 id="fork">Fork reflex</h3>
 
 <p>(The implementation can be found in
 <a href="https://github.com/hoijui/escher/blob/master/be/union.go">be/union.go</a>.)
