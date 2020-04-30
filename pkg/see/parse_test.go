@@ -4,13 +4,14 @@
 // this notice, so peers of other times and backgrounds can
 // see history clearly.
 
-package see
+package see_test
 
 import (
 	"fmt"
 	"testing"
 
 	. "github.com/hoijui/escher/pkg/a"
+	. "github.com/hoijui/escher/pkg/see"
 )
 
 var testValue = []string{

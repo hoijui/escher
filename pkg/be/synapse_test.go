@@ -4,10 +4,12 @@
 // this notice, so peers of other times and backgrounds can
 // see history clearly.
 
-package be
+package be_test
 
 import (
 	"testing"
+
+	. "github.com/hoijui/escher/pkg/be"
 )
 
 func TestSynapse(t *testing.T) {

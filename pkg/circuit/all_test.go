@@ -4,11 +4,13 @@
 // this notice, so peers of other times and backgrounds can
 // see history clearly.
 
-package circuit
+package circuit_test
 
 import (
 	"fmt"
 	"testing"
+
+	. "github.com/hoijui/escher/pkg/circuit"
 )
 
 func TestSame(t *testing.T) {
