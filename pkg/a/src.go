@@ -8,7 +8,6 @@ package a
 
 import (
 	"bytes"
-	"fmt"
 	"strings"
 	"unicode/utf8"
 )
@@ -104,12 +103,4 @@ func (src *Src) Consume(match ConsumeFunc) string {
 		m += n
 	}
 	return src.SkipString(m)
-}
-
-func panicf(format string, arg ...interface{}) {
-	panic(fmt.Sprintf(format, arg...))
-}
-
-func printf(format string, arg ...interface{}) {
-	println(fmt.Sprintf(format, arg...))
 }

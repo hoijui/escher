@@ -92,7 +92,6 @@ func makeReflex(like interface{}) reflect.Value {
 	default: // Value-based types are used as is
 		return reflect.ValueOf(like)
 	}
-	panic(0)
 }
 
 // Verify all dedicated valves are connected and all connected valves are handled (by dedicated or ellipses).

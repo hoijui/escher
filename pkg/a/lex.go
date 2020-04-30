@@ -23,10 +23,6 @@ func isNewline(r rune) bool {
 	return r == '\n' || r == '\r'
 }
 
-func isNotNewline(r rune) bool {
-	return !isNewline(r)
-}
-
 const RefineSymbolString = "."
 const RefineSymbolRune = '.'
 

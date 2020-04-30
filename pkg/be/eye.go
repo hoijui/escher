@@ -25,11 +25,6 @@ type Eye struct {
 
 type nerve chan *ReCognizer
 
-type change struct {
-	Valve cir.Name
-	Value interface{}
-}
-
 type EyeCognizer func(eye *Eye, valve cir.Name, value interface{})
 
 func NewEye(given Reflex) (eye *Eye) {
