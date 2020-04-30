@@ -62,6 +62,4 @@ func route(design interface{}, given Reflex, matter cir.Circuit) (residue interf
 	default:
 		return materializeNoun(given, matter.Grow("Noun", t))
 	}
-	panicWithMatter(matter, "unknown design type: %T", design)
-	return
 }
