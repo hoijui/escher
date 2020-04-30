@@ -46,8 +46,14 @@ var (
 func main() {
 	// parse flags
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Usage: %v [-src Dir] [-d NetAddress] MainCircuit Arguments...\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Usage:\n")
+		fmt.Fprintf(os.Stderr, "  %v [OPTION]... <main-circuit> [ARGUMENT]...\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Options:\n")
+		fmt.Fprintf(os.Stderr, "  -h, --help\n\tprint this usage help message and exit\n")
 		flag.PrintDefaults()
+		fmt.Fprintf(os.Stderr, "Examples:\n")
+		fmt.Fprintf(os.Stderr, "  # When in escher sources repo root:\n")
+		fmt.Fprintf(os.Stderr, "  %v -src ./src/ \"*tutorial.HelloWorldMain\"\n", os.Args[0])
 	}
 	flag.Parse()
 	var flagMain string
