@@ -143,18 +143,16 @@ func SeeBackquoteString(src *a.Src) interface{} {
 }
 
 func DelimitBackquoteString(src *a.Src) (string, bool) {
-	var m int // number of bytes accepted into the quoted portion
 	buf := src.Buffer()
 	// first backquote
-	r, n, err := buf.ReadRune()
+	r, _, err := buf.ReadRune()
 	if err != nil || r != '`' {
 		return a.NullLiteral, false
 	}
-	m += n
 	//
 	var q int // number of backquotes right behind cursor, not counting opening backquote
 	for {
-		r, n, err = buf.ReadRune()
+		r, _, err = buf.ReadRune()
 		if err != nil {
 			if q != 1 { // reached end without finding closing backquote
 				return a.NullLiteral, false
@@ -201,18 +199,16 @@ func SeeDoubleQuoteString(src *a.Src) interface{} {
 }
 
 func DelimitDoubleQuoteString(src *a.Src) (string, bool) {
-	var m int // number of bytes accepted into the quoted portion
 	buf := src.Buffer()
 	// first quote
-	r, n, err := buf.ReadRune()
+	r, _, err := buf.ReadRune()
 	if err != nil || r != '"' {
 		return a.NullLiteral, false
 	}
-	m += n
 	//
 	var backslash bool // true if previous character is backslash
 	for {
-		r, n, err = buf.ReadRune()
+		r, _, err = buf.ReadRune()
 		if err != nil {
 			return a.NullLiteral, false // reached end of string without closing quote
 		}
