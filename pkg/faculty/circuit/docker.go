@@ -7,7 +7,6 @@
 package circuit
 
 import (
-	"errors"
 	"fmt"
 	"log"
 	"sync"
@@ -168,7 +167,7 @@ func (p *dockerBack) spawnDocker(spwn interface{}) error {
 	log.Printf("circuit container (%v) exited", cir.Linearize(fmt.Sprintf("%v", spwn)))
 	var exit error
 	if stat.State.ExitCode != 0 {
-		exit = errors.New(fmt.Sprintf("circuit container exit code: %d", stat.State.ExitCode))
+		exit = fmt.Errorf("circuit container exit code: %d", stat.State.ExitCode)
 		log.Println(exit.Error())
 	}
 	return exit

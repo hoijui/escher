@@ -71,7 +71,7 @@ func (a Verb) compactible() bool {
 		if !ok {
 			return false
 		}
-		if strings.IndexAny(s, "@*.\n") >= 0 {
+		if strings.ContainsAny(s, "@*.\n") {
 			return false
 		}
 	}

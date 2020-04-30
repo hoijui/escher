@@ -19,8 +19,8 @@ func MaterializeSystem(system interface{}, index, barrier cir.Circuit) (residue 
 		if r := recover(); r != nil {
 			switch t := r.(type) {
 			case Panic:
-				fmt.Fprintf(os.Stderr, t.Msg)
-				fmt.Fprintf(os.Stderr, PrintableMatter(t.Matter))
+				fmt.Fprint(os.Stderr, t.Msg)
+				fmt.Fprint(os.Stderr, PrintableMatter(t.Matter))
 				runtime.PrintStack()
 				os.Exit(1)
 			default:
