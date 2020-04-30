@@ -58,10 +58,10 @@ func (s *Server) cognizeResponse(header http.Header, u cir.Circuit) (status int,
 		body = ioutil.NopCloser(bytes.NewBufferString(t))
 	case []byte:
 		body = ioutil.NopCloser(bytes.NewBuffer(t))
-	case io.Reader:
-		body = ioutil.NopCloser(t)
 	case io.ReadCloser:
 		body = t
+	case io.Reader:
+		body = ioutil.NopCloser(t)
 	default:
 		panic("unrecognized http response body type")
 	}
