@@ -103,17 +103,15 @@ func String(v Value) string {
 	case Circuit:
 		if IsVerb(t) {
 			return Verb(t).String()
-		} else {
-			return t.String()
 		}
+		return t.String()
 	case int, float64, complex128, bool:
 		return fmt.Sprintf("%v", t)
 	case string:
 		if a.IsName(t) {
 			return fmt.Sprintf("%v", t)
-		} else {
-			return fmt.Sprintf("%q", t)
 		}
+		return fmt.Sprintf("%q", t)
 	case interface {
 		String() string
 	}:

@@ -48,9 +48,8 @@ func route(design interface{}, given Reflex, matter cir.Circuit) (residue interf
 	case cir.Circuit:
 		if cir.IsVerb(t) {
 			return materializeVerb(given, matter.Grow("Verb", t))
-		} else {
-			return materializeCircuit(given, matter.Grow("Circuit", t))
 		}
+		return materializeCircuit(given, matter.Grow("Circuit", t))
 	case Materializer:
 		defer func() {
 			if r := recover(); r != nil {
