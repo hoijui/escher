@@ -56,12 +56,12 @@ func show(name cir.Name, v interface{}) {
 
 func show1(name cir.Name, v interface{}) {
 	var w bytes.Buffer
-	cir.Print(&w, cir.Format{"", "\t", 1}, v)
+	cir.Print(&w, cir.Format{Prefix: "", Indent: "\t", Recurse: 1}, v)
 	fmt.Printf("Showing:%v = %v\n", name, w.String())
 }
 
 func show2(name cir.Name, v interface{}) {
 	var w bytes.Buffer
-	cir.Print(&w, cir.Format{"", "\t", 2}, v)
+	cir.Print(&w, cir.Format{Prefix: "", Indent: "\t", Recurse: 2}, v)
 	fmt.Printf("Showing:%v = %v\n", name, w.String())
 }

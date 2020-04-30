@@ -32,10 +32,10 @@ func SeeLink(src *a.Src, nsugar int) (x []cir.Vector, carry []*Carry) {
 	}
 	if g != nil {
 		carry[0] = &Carry{nsugar, g}
-		x[0] = cir.Vector{nsugar, cir.DefaultValve}
+		x[0] = cir.Vector{Gate: nsugar, Valve: cir.DefaultValve}
 		nsugar++
 	} else {
-		x[0] = cir.Vector{p, v}
+		x[0] = cir.Vector{Gate: p, Valve: v}
 	}
 	//
 	a.Whitespace(t)
@@ -48,10 +48,10 @@ func SeeLink(src *a.Src, nsugar int) (x []cir.Vector, carry []*Carry) {
 	}
 	if g != nil {
 		carry[1] = &Carry{nsugar, g}
-		x[1] = cir.Vector{nsugar, cir.DefaultValve}
-		nsugar++
+		x[1] = cir.Vector{Gate: nsugar, Valve: cir.DefaultValve}
+		//nsugar++
 	} else {
-		x[1] = cir.Vector{p, v}
+		x[1] = cir.Vector{Gate: p, Valve: v}
 	}
 	//
 	if !Space(t) { // require newline at end
