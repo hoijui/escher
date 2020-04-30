@@ -37,13 +37,10 @@ import (
 	_ "github.com/hoijui/escher/pkg/faculty/yield"
 )
 
-// usage: escher [-a dir] [-show] address arguments...
-var (
-	flagSrc      = flag.String("src", "", "source directory")
-	flagDiscover = flag.String("d", "", "multicast UDP discovery address for gocircuit.org faculty")
-)
-
 func main() {
+	flagSrc := flag.String("src", "", "source directory")
+	flagDiscover := flag.String("d", "", "multicast UDP discovery address for gocircuit.org faculty")
+
 	// parse flags
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n")
@@ -59,25 +56,30 @@ func main() {
 	var flagMain string
 	var flagArgs = flag.Args()
 	if len(flagArgs) > 0 {
-		flagMain, flagArgs = flagArgs[0], flagArgs[1:]
+		flagMain = flagArgs[0]
+		flagArgs = flagArgs[1:]
 	}
 	// parse env
 	if *flagSrc == "" {
 		*flagSrc = os.Getenv("ESCHER")
 	}
 
+	interpreter(flagMain, *flagSrc, *flagDiscover, flagArgs)
+}
+
+func interpreter(main string, srcDir string, discover string, args []string) {
 	// initialize faculties
-	fos.Init(flagArgs)
-	test.Init(*flagSrc)
-	circuit.Init(*flagDiscover)
+	fos.Init(args)
+	test.Init(srcDir)
+	circuit.Init(discover)
 	//
 	index := fac.Root()
-	if *flagSrc != "" {
-		index.Merge(fs.Load(*flagSrc))
+	if srcDir != "" {
+		index.Merge(fs.Load(srcDir))
 	}
 	// run main
-	if flagMain != "" {
-		verb := see.ParseVerb(flagMain)
+	if main != "" {
+		verb := see.ParseVerb(main)
 		if cir.Circuit(verb).IsNil() {
 			fmt.Fprintf(os.Stderr, "verb '%v' not recognized\n", verb)
 			os.Exit(1)
