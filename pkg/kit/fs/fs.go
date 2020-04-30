@@ -71,15 +71,15 @@ func loadFile(dir, file string) be.Index {
 	src := a.NewSrcString(string(text))
 	for {
 		see.Space(src)
-		n_, u_ := see.SeePeer(src)
-		if n_ == nil {
+		n, u := see.SeePeer(src)
+		if n == nil {
 			break
 		}
-		n := n_.(string) // n is a string
-		if u, ok := u_.(cir.Circuit); ok {
-			u.Include(a.Source{}, cir.New().Grow("Dir", dir).Grow("File", file))
+		nStr := n.(string) // n is a string
+		if uCir, ok := u.(cir.Circuit); ok {
+			uCir.Include(a.Source{}, cir.New().Grow("Dir", dir).Grow("File", file))
 		}
-		x.Memorize(u_, n)
+		x.Memorize(u, nStr)
 	}
 	return x
 }

@@ -21,15 +21,15 @@ type Filter struct{ be.Sparkless }
 func (Filter) CognizeIn(eye *be.Eye, v interface{}) {
 	x := v.(cir.Circuit)
 	//
-	name_, view := x.NameAt("Name"), x.CircuitAt("View")
-	name, ok := name_.(string)
+	name, view := x.NameAt("Name"), x.CircuitAt("View")
+	nameStr, ok := name.(string)
 	if !ok {
 		return
 	}
-	if !strings.HasPrefix(name, "Test") {
+	if !strings.HasPrefix(nameStr, "Test") {
 		return
 	}
-	sfx := name[len("Test"):]
+	sfx := nameStr[len("Test"):]
 	if len(sfx) == 0 || !unicode.IsUpper(rune(sfx[0])) {
 		return
 	}
