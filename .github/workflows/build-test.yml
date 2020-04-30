@@ -7,7 +7,7 @@ jobs:
   build:
     name: Build & Test
     env:
-      MAIN_SRC_DIR: ./main/
+      MAIN_SRC_DIR: ./cmd/escher/
     runs-on: ubuntu-latest
     steps:
 

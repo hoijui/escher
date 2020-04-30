@@ -29,7 +29,7 @@ install:
 - go get -v -t ./...
 
 script:
-- go install -v ./main/
+- go install -v ./cmd/escher/
 - escher "*test.All"
 - mkdir -p public
 - if [ "$ONCE" = "true" ]; then scripts/build_handbook.sh public; fi
