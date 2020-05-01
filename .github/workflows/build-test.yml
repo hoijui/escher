@@ -40,3 +40,10 @@ jobs:
     - name: Run Escher Tutorials
       run: scripts/tutorials.sh
 
+    - name: Run GoLang-CI Linter
+      run: |
+        # install it into ./bin/
+        curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.25.1
+        # NOTE the " || true" chould possibly be removed from the below, once we reach 0 warnings
+        # NOTE " --enable-all" chould possibly be added to the below, to get more warnings
+        ./bin/golangci-lint run || true
