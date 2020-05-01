@@ -30,6 +30,7 @@ func IsIdentifier(r rune) bool {
 	if r == RefineSymbolRune {
 		return false
 	}
+
 	switch {
 	case r >= 'a' && r <= 'z', r >= 'A' && r <= 'Z':
 		return true

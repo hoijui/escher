@@ -68,6 +68,7 @@ func (u Circuit) CircuitOptionAt(name Name) (Circuit, bool) {
 	if !ok {
 		return New(), false
 	}
+
 	t, ok := v.(Circuit)
 	if !ok {
 		return New(), false
@@ -213,6 +214,7 @@ func (u Circuit) Lookup(addr []Name) (v Value) {
 			v = nil
 		}
 	}()
+
 	v = u
 	for _, name := range addr {
 		v = v.(Circuit).At(name)
@@ -226,6 +228,7 @@ func (u Circuit) Goto(gate ...Name) Value {
 		if i+1 == len(gate) {
 			return x.At(g)
 		}
+
 		var ok bool
 		x, ok = x.CircuitOptionAt(g)
 		if !ok {
@@ -246,9 +249,9 @@ func (u Circuit) Merge(v Circuit) {
 			}
 			w, ok := h.(Circuit)
 			if !ok {
-				panic("overwriting non-circuit value")
 				// u.Include(n, g)
 				// break
+				panic("overwriting non-circuit value")
 			}
 			w.Merge(t)
 		default:

@@ -93,8 +93,9 @@ func (src *Src) Match(prefix string) {
 type ConsumeFunc func(rune) bool
 
 func (src *Src) Consume(match ConsumeFunc) string {
+	var m = 0
 	buf := src.Bytes()
-	var m int
+
 	for r, n := utf8.DecodeRune(buf); r != utf8.RuneError; r, n = utf8.DecodeRune(buf) {
 		if !match(r) {
 			break
@@ -102,5 +103,6 @@ func (src *Src) Consume(match ConsumeFunc) string {
 		buf = buf[n:]
 		m += n
 	}
+
 	return src.SkipString(m)
 }
