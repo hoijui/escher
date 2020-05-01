@@ -13,8 +13,8 @@ import (
 // Required matter: Noun
 func materializeNoun(given Reflex, matter cir.Circuit) (residue interface{}) {
 	noun := matter.At("Noun")
-	for _, syn_ := range given {
-		syn := syn_
+	for _, synLoop := range given {
+		syn := synLoop
 		go func() {
 			syn.Connect(DontCognize).ReCognize(noun)
 		}()

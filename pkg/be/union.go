@@ -49,9 +49,9 @@ func (u *Union) Spark(eye *Eye, matter cir.Circuit, aux ...interface{}) cir.Valu
 }
 
 func (u *Union) Cognize(eye *Eye, value interface{}) {
-	y := make(chan struct{})     // block and
-	for _, f_ := range u.field { // send updated values to all field valves
-		f := f_
+	y := make(chan struct{})        // block and
+	for _, fLoop := range u.field { // send updated values to all field valves
+		f := fLoop
 		go func() {
 			defer func() {
 				if r := recover(); r != nil {
