@@ -10,9 +10,6 @@ import (
 	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
-// *Spirit gates emit the residue of the enclosing circuit itself
-var SpiritVerb = cir.NewVerbAddress("*", "Spirit")
-
 // create all links before materializing gates
 func createLinks(design cir.Circuit) map[cir.Name]Reflex {
 
@@ -41,6 +38,11 @@ func calcResidue(matter cir.Circuit, design cir.Circuit, gates map[cir.Name]Refl
 
 	residue := cir.New()
 	spirit := make(map[cir.Name]interface{}) // channel to pass circuit residue back to spirit gates inside the circuit
+
+	// spiritVerb denotes "*Spirit" gates in escher,
+	// which emit the residue of the enclosing circuit itself
+	spiritVerb := cir.NewVerbAddress("*", "Spirit")
+
 	for g := range design.Gate {
 		if g == cir.Super {
 			panicWithMatter(matter, "Circuit design overwrites the empty-string gate, in design %v\n", design)
@@ -54,7 +56,7 @@ func calcResidue(matter cir.Circuit, design cir.Circuit, gates map[cir.Name]Refl
 			view.Grow(vlv, design.Gate[vec.Gate])
 		}
 
-		if cir.Same(gSyntax, SpiritVerb) {
+		if cir.Same(gSyntax, spiritVerb) {
 			gResidue, spirit[g] = MaterializeInstance(gates[g], newSubMatterView(matter, view), &Future{})
 		} else {
 			if gCir, ok := gSyntax.(cir.Circuit); ok && !cir.IsVerb(gCir) {
