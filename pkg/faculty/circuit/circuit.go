@@ -4,7 +4,9 @@
 // this notice, so peers of other times and backgrounds can
 // see history clearly.
 
-// Package circuit provides Escher gates for building dynamic cloud applications using the circuit runtime of http://gocircuit.org
+// Package circuit provides Escher gates
+// for building dynamic cloud applications
+// using the circuit runtime of http://gocircuit.org
 package circuit
 
 import (
