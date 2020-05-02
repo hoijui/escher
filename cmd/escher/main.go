@@ -22,9 +22,9 @@ import (
 
 	// Load faculties
 	_ "github.com/hoijui/escher/pkg/faculty/basic"
-	"github.com/hoijui/escher/pkg/faculty/circuit"
 	_ "github.com/hoijui/escher/pkg/faculty/cmplx"
 	_ "github.com/hoijui/escher/pkg/faculty/escher"
+	"github.com/hoijui/escher/pkg/faculty/gocircuit"
 	_ "github.com/hoijui/escher/pkg/faculty/http"
 	_ "github.com/hoijui/escher/pkg/faculty/index"
 	_ "github.com/hoijui/escher/pkg/faculty/io"
