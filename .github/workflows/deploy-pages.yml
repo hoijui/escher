@@ -27,9 +27,6 @@ jobs:
     - name: Get Go dependencies
       run: go get -v -t -d ./...
 
-    - name: Build from Go sources
-      run: go build -v "$MAIN_SRC_DIR"
-
     - name: Install the main executable into PATH
       run: go install -v "$MAIN_SRC_DIR"
 
