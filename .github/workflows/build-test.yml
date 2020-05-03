@@ -23,8 +23,11 @@ jobs:
     - name: Get Go dependencies
       run: go get -v -t -d ./...
 
+    - name: Create the bin directory (will ocntain the built binaries)
+      run: mkdir -p bin
+
     - name: Build from Go sources
-      run: go build -v "$MAIN_SRC_DIR"
+      run: go build -v -o bin/escher "$MAIN_SRC_DIR"
 
     - name: Install the main executable into PATH
       run: go install -v "$MAIN_SRC_DIR"
@@ -42,3 +45,4 @@ jobs:
         # NOTE the " || true" chould possibly be removed from the below, once we reach 0 warnings
         # NOTE " --enable-all" chould possibly be added to the below, to get more warnings
         ./bin/golangci-lint run || true
+
