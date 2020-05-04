@@ -4,8 +4,8 @@ README.pdf
 TODO.html
 TODO.pdf
 
-# Main binary
-/escher
+# Compiled binaries
+/bin/
 
 # Handbook build dir
 /public/
