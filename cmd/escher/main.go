@@ -11,6 +11,9 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"plugin"
+	"regexp"
+	"strings"
 
 	"github.com/hoijui/escher/pkg/a"
 	"github.com/hoijui/escher/pkg/be"
@@ -41,7 +44,6 @@ func main() {
 	flagSrc := flag.String("src", "", "source directory")
 	flagDiscover := flag.String("d", "", "multicast UDP discovery address for gocircuit.org faculty")
 
-	// parse flags
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n")
 		fmt.Fprintf(os.Stderr, "  %v [OPTION]... <main-circuit> [ARGUMENT]...\n", os.Args[0])
@@ -60,22 +62,6 @@ func main() {
 		flagArgs = flagArgs[1:]
 	}
 	// parse env
-	if *flagSrc == "" {
-		*flagSrc = os.Getenv("ESCHER")
-	}
-
-	interpreter(flagMain, *flagSrc, *flagDiscover, flagArgs)
-}
-
-func interpreter(main string, srcDir string, discover string, args []string) {
-	// initialize faculties
-	fos.Init(args)
-	test.Init(srcDir)
-	circuit.Init(discover)
-	//
-	index := fac.Root()
-	if srcDir != "" {
-		index.Merge(fs.Load(srcDir))
 	}
 	// run main
 	if main != "" {

@@ -23,7 +23,7 @@ jobs:
     - name: Get Go dependencies
       run: go get -v -t -d ./...
 
-    - name: Create the bin directory (will ocntain the built binaries)
+    - name: Create the bin directory (will contain the built binaries)
       run: mkdir -p bin
 
     - name: Build from Go sources
