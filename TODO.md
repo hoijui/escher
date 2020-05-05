@@ -11,6 +11,8 @@
 * convert non-escher files in source directory in materializers of respective file readers
 * We need something like JavaDoc (both the standard for doc comments, and the tool)
 * We need documentation in the code, and an API doc (see point above)
+* externalizethe plugin interface into a separate Go module
+* introduce (useful) stack-traces in Go (Go does not suport that natively! needs 3rd party tools/libs)
 
 ## THINK
 
