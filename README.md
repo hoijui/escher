@@ -6,7 +6,8 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/hoijui/escher)](https://goreportcard.com/report/github.com/hoijui/escher)
 
 > ___NOTE___\
-> _Escher -- in the original repository -- is stagnant since 2015._\
+> _Escher -- in [the original repository](https://github.com/gocircuit/escher) -- is stagnant since 2015._\
+> The most recent version of the old project can be found in [hoijuis old-history fork](https://github.com/hoijui/escher-old-history).\
 > This project however, is (more) alive!
 
 See [the projects website](https://hoijui.github.io/escher/)
