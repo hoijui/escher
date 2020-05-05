@@ -7,8 +7,6 @@
 package escher
 
 import (
-	// "log"
-
 	"github.com/hoijui/escher/pkg/a"
 	"github.com/hoijui/escher/pkg/be"
 	"github.com/hoijui/escher/pkg/kit/plumb"

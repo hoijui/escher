@@ -7,24 +7,21 @@
 package escher
 
 import (
-	// "fmt"
-	// "log"
-
 	"github.com/hoijui/escher/pkg/be"
-	. "github.com/hoijui/escher/pkg/circuit"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 type System struct {
-	barrier Circuit
+	barrier cir.Circuit
 }
 
-func (s *System) Spark(_ *be.Eye, matter Circuit, _ ...interface{}) Value {
+func (s *System) Spark(_ *be.Eye, matter cir.Circuit, _ ...interface{}) cir.Value {
 	s.barrier = matter
 	return nil
 }
 
 func (s *System) CognizeView(eye *be.Eye, value interface{}) {
-	u := value.(Circuit)
+	u := value.(cir.Circuit)
 	residue := be.MaterializeSystem(u.At("Program"), u.CircuitAt("Index"), s.barrier)
 	eye.Show("Residue", residue)
 }
