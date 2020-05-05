@@ -17,9 +17,7 @@ import (
 	"github.com/hoijui/escher/pkg/kit/plumb"
 )
 
-// Docker
-
-// docker is the materialized docker reflex
+// Docker is the materialized docker reflex
 type Docker struct {
 	sync.Once                  // start backloop once
 	spawn     chan interface{} // notify loop of spawn memes

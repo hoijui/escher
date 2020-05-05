@@ -10,15 +10,19 @@ import (
 	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
+// TODO Is this basically the implementation of a _Valve_? If so, it should probably be renamed, as the comment below makes sufficient reference to the Eye concept
+
 // Eye is a runtime facility that delivers messages by invoking gate methods and
 // provides methods that the gate can use to send messages out.
 //
-// Eye is an implementation of Leslie Valiant's “Mind's Eye”, described in
-//	http://www.probablyapproximatelycorrect.com/
+// Eye is an implementation of Leslie Valiant's “Mind's Eye”, described in the book:
+//     Probably Approximately Correct -
+//     Nature's Algorithms for Learning and Prospering in a Complex World
+//     PDF: https://dl.acm.org/doi/book/10.5555/2536711
+//     It is a book about some basic concepts for Machine Learning from 1984.
 // The mind's eye is a synchronization device which sees changes as ordered
 // and thus introduces the illusory perception of time (and, eventually, of the
 // higher-level concepts of cause and effect).
-//
 type Eye struct {
 	show map[cir.Name]nerve
 }
