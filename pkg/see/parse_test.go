@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"testing"
 
-	. "github.com/hoijui/escher/pkg/a"
-	. "github.com/hoijui/escher/pkg/see"
+	"github.com/hoijui/escher/pkg/a"
+	"github.com/hoijui/escher/pkg/see"
 )
 
 func TestValue(t *testing.T) {
@@ -28,7 +28,7 @@ func TestValue(t *testing.T) {
 	}
 
 	for _, q := range testValue {
-		x := SeeValue(NewSrcString(q))
+		x := see.SeeValue(a.NewSrcString(q))
 		if x == nil {
 			t.Errorf("problem parsing: %s", q)
 			continue
@@ -50,7 +50,7 @@ func TestLink(t *testing.T) {
 	}
 
 	for _, q := range testLink {
-		x, _ := SeeLink(NewSrcString(q), 0)
+		x, _ := see.SeeLink(a.NewSrcString(q), 0)
 		if x == nil {
 			t.Fatalf("problem parsing: %s", q)
 			continue
@@ -90,7 +90,7 @@ func TestPeer(t *testing.T) {
 	}
 
 	for _, q := range testPeer {
-		x, m := SeePeer(NewSrcString(q))
+		x, m := see.SeePeer(a.NewSrcString(q))
 		if x == nil {
 			t.Errorf("problem parsing: %s", q)
 			continue
@@ -160,7 +160,7 @@ func TestCircuit(t *testing.T) {
 	}
 
 	for _, q := range testCircuit {
-		x := SeeCircuit(NewSrcString(q))
+		x := see.SeeCircuit(a.NewSrcString(q))
 		if x == nil {
 			t.Errorf("problem parsing: %s", q)
 			continue
@@ -182,7 +182,7 @@ func TestChamber(t *testing.T) {
 	}
 
 	for _, q := range testChamber {
-		x := SeeChamber(NewSrcString(q))
+		x := see.SeeChamber(a.NewSrcString(q))
 		if x == nil {
 			t.Errorf("problem parsing: %s", q)
 			continue

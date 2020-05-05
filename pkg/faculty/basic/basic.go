@@ -7,10 +7,7 @@
 package basic
 
 import (
-	// "fmt"
-
 	"github.com/hoijui/escher/pkg/be"
-	// . "github.com/hoijui/escher/pkg/circuit"
 	"github.com/hoijui/escher/pkg/faculty"
 )
 

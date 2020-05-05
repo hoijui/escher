@@ -9,21 +9,21 @@ package be_test
 import (
 	"testing"
 
-	. "github.com/hoijui/escher/pkg/be"
+	"github.com/hoijui/escher/pkg/be"
 )
 
 func TestSynapse(t *testing.T) {
-	x, y := NewSynapse()
-	p, q := NewSynapse()
-	go Link(y, p)
-	go Link(p, y)
+	x, y := be.NewSynapse()
+	p, q := be.NewSynapse()
+	go be.Link(y, p)
+	go be.Link(p, y)
 	ch := make(chan int)
 	go func() {
-		x.Connect(DontCognize).ReCognize(1)
+		x.Connect(be.DontCognize).ReCognize(1)
 		ch <- 1
 	}()
 	go func() {
-		q.Connect(DontCognize).ReCognize(1)
+		q.Connect(be.DontCognize).ReCognize(1)
 		ch <- 1
 	}()
 	<-ch

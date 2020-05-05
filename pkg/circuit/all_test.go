@@ -10,21 +10,21 @@ import (
 	"fmt"
 	"testing"
 
-	. "github.com/hoijui/escher/pkg/circuit"
+	cir "github.com/hoijui/escher/pkg/circuit"
 )
 
 func TestSame(t *testing.T) {
-	if !Same(New().Grow("x", nil), New().Grow("x", nil)) {
+	if !cir.Same(cir.New().Grow("x", nil), cir.New().Grow("x", nil)) {
 		t.Errorf("same")
 	}
-	if !Same(New().Grow("x", DefaultValve), New().Grow("x", DefaultValve)) {
+	if !cir.Same(cir.New().Grow("x", cir.DefaultValve), cir.New().Grow("x", cir.DefaultValve)) {
 		t.Errorf("same")
 	}
 }
 
 func TestVerb(t *testing.T) {
-	a, b := Circuit(NewVerbAddress("@", "abc", "d", 1)), Circuit(NewVerbAddress("@", "abc", "d", 1))
-	if !Same(a, b) {
+	a, b := cir.Circuit(cir.NewVerbAddress("@", "abc", "d", 1)), cir.Circuit(cir.NewVerbAddress("@", "abc", "d", 1))
+	if !cir.Same(a, b) {
 		t.Errorf("verb same")
 	}
 	fmt.Printf("%v\n", a)
