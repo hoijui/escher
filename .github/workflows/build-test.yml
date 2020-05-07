@@ -29,6 +29,13 @@ jobs:
     - name: Build from Go sources
       run: go build -v -o bin/escher "$MAIN_SRC_DIR"
 
+    - name: Create the plugin directories (will contain the built plugin binaries)
+      run: mkdir -p bin/plugins/faculty
+
+    - name: Build Plugins from Go sources
+      run: |
+        go build -v -buildmode=plugin -o bin/plugins/faculty/gocircuit.so ./pkg/faculty/gocircuit/
+
     - name: Install the main executable into PATH
       run: go install -v "$MAIN_SRC_DIR"
 

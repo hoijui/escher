@@ -7,10 +7,17 @@
 // Package circuit provides Escher gates
 // for building dynamic cloud applications
 // using the circuit runtime of http://gocircuit.org
-package circuit
+
+// The following excludes this file from defualt compilation.
+// To include, you would have to use this command:
+// go build -tags=plugin_faculty_gocircuit ./...
+// But We actually compile this into a Go plugin with:
+// go build -v -buildmode=plugin -o bin/plugins/faculty/gocircuit.so ./pkg/faculty/gocircuit/
+// +build plugin_faculty_gocircuit
+
+package main
 
 import (
-	// "fmt"
 	"math/rand"
 	"strconv"
 	"time"
@@ -21,10 +28,10 @@ import (
 )
 
 // client *client.Client
-func Init(discover string) {
+func Init(discover []string) {
 	program = &Program{}
-	if discover != "" {
-		program.Client = client.DialDiscover(discover, nil)
+	if len(discover) > 0 && discover[0] != "" {
+		program.Client = client.DialDiscover(discover[0], nil)
 	}
 
 	rand.Seed(time.Now().UnixNano())

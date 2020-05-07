@@ -4,7 +4,14 @@
 // this notice, so peers of other times and backgrounds can
 // see history clearly.
 
-package circuit
+// The following excludes this file from defualt compilation.
+// To include, you would have to use this command:
+// go build -tags=plugin_faculty_gocircuit ./...
+// But We actually compile this into a Go plugin with:
+// go build -v -buildmode=plugin -o bin/plugins/faculty/gocircuit.so ./pkg/faculty/gocircuit/
+// +build plugin_faculty_gocircuit
+
+package main
 
 import (
 	"fmt"

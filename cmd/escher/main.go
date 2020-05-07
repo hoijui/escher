@@ -11,8 +11,10 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 	"plugin"
 	"regexp"
+	"runtime"
 	"strings"
 
 	"github.com/hoijui/escher/pkg/a"
@@ -27,7 +29,6 @@ import (
 	_ "github.com/hoijui/escher/pkg/faculty/basic"
 	_ "github.com/hoijui/escher/pkg/faculty/cmplx"
 	_ "github.com/hoijui/escher/pkg/faculty/escher"
-	"github.com/hoijui/escher/pkg/faculty/gocircuit"
 	_ "github.com/hoijui/escher/pkg/faculty/http"
 	_ "github.com/hoijui/escher/pkg/faculty/index"
 	_ "github.com/hoijui/escher/pkg/faculty/io"
@@ -41,9 +42,10 @@ import (
 )
 
 func main() {
+	// define flags
 	flagSrc := flag.String("src", "", "source directory")
 	flagDiscover := flag.String("d", "", "multicast UDP discovery address for gocircuit.org faculty")
-
+	flagPluginDirs := flag.String("p", "", "plugins directories - they may contain shared libraries implementing custom circuits (':' delimited list)")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n")
 		fmt.Fprintf(os.Stderr, "  %v [OPTION]... <main-circuit> [ARGUMENT]...\n", os.Args[0])
@@ -54,6 +56,8 @@ func main() {
 		fmt.Fprintf(os.Stderr, "  # When in escher sources repo root:\n")
 		fmt.Fprintf(os.Stderr, "  %v -src ./src/ \"*tutorial.HelloWorldMain\"\n", os.Args[0])
 	}
+
+	// parse flags
 	flag.Parse()
 	var flagMain string
 	var flagArgs = flag.Args()
@@ -62,6 +66,72 @@ func main() {
 		flagArgs = flagArgs[1:]
 	}
 	// parse env
+	if *flagSrc == "" {
+		*flagSrc = os.Getenv("ESCHER")
+	}
+	if *flagPluginDirs == "" {
+		*flagPluginDirs = os.Getenv("ESCHER_PLUGINS")
+	}
+	pluginDirs := strings.Split(*flagPluginDirs, ":")
+
+	interpreter(flagMain, *flagSrc, *flagDiscover, pluginDirs, flagArgs)
+}
+
+func dylibExt() string {
+	if runtime.GOOS == "windows" {
+		return "dll"
+	} else if runtime.GOOS == "darwin" {
+		return "dylib"
+	} else {
+		return "so"
+	}
+}
+
+func interpreter(main string, srcDir string, discover string, pluginDirs []string, args []string) {
+	// initialize non-plugin/integrated faculties
+	fos.Init(args)
+	test.Init(srcDir)
+
+	var pluginFiles []string
+	// HACK Move the whole plugin stuff into a separate file, or even separate plugin, and consult other/sample project for ideas of how to best do it.
+	sharedFileMatcher := regexp.MustCompile(`.*\.` + dylibExt())
+	for _, pluginDir := range pluginDirs {
+		err := filepath.Walk(pluginDir, func(path string, info os.FileInfo, err error) error {
+			if sharedFileMatcher.MatchString(path) {
+				//fmt.Printf("Found plugin '%s'\n", path)
+				pluginFiles = append(pluginFiles, path)
+			}
+			return nil
+		})
+		if err != nil {
+			panic(err)
+		}
+	}
+	for _, pluginFile := range pluginFiles {
+		fmt.Printf("Loading plugin '%s' ...\n", pluginFile)
+		plug, err := plugin.Open(pluginFile)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+		symPluginInit, err := plug.Lookup("Init")
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+		var pluginInit func([]string)
+		pluginInit, ok := symPluginInit.(func([]string))
+		if !ok {
+			fmt.Println("unexpected type from module symbol")
+			os.Exit(1)
+		}
+		pluginInit(args)
+	}
+	fmt.Println("Done loading plugins.")
+
+	index := fac.Root()
+	if srcDir != "" {
+		index.Merge(fs.Load(srcDir))
 	}
 	// run main
 	if main != "" {
