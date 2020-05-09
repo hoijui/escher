@@ -72,7 +72,13 @@ func main() {
 	if *flagPluginDirs == "" {
 		*flagPluginDirs = os.Getenv("ESCHER_PLUGINS")
 	}
-	pluginDirs := strings.Split(*flagPluginDirs, ":")
+	var pluginDirs []string
+	if *flagPluginDirs != "" {
+		pluginDirs = append(pluginDirs, strings.Split(*flagPluginDirs, ":")...)
+	}
+	if len(pluginDirs) == 0 {
+		pluginDirs = append(pluginDirs, execDir()+"/plugins")
+	}
 
 	interpreter(flagMain, *flagSrc, *flagDiscover, pluginDirs, flagArgs)
 }
@@ -85,6 +91,16 @@ func dylibExt() string {
 	} else {
 		return "so"
 	}
+}
+
+// execDir returns the path to the directory containing the current executable
+func execDir() string {
+	ex, err := os.Executable()
+	if err != nil {
+		panic(err)
+	}
+	exPath := filepath.Dir(ex)
+	return exPath
 }
 
 func interpreter(main string, srcDir string, discover string, pluginDirs []string, args []string) {
