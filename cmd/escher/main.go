@@ -96,6 +96,7 @@ func interpreter(main string, srcDir string, discover string, pluginDirs []strin
 	// HACK Move the whole plugin stuff into a separate file, or even separate plugin, and consult other/sample project for ideas of how to best do it.
 	sharedFileMatcher := regexp.MustCompile(`.*\.` + dylibExt())
 	for _, pluginDir := range pluginDirs {
+		fmt.Printf("Scannig plugin dir '%s' ...\n", pluginDir)
 		err := filepath.Walk(pluginDir, func(path string, info os.FileInfo, err error) error {
 			if sharedFileMatcher.MatchString(path) {
 				//fmt.Printf("Found plugin '%s'\n", path)
