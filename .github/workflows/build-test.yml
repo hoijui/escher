@@ -34,7 +34,7 @@ jobs:
 
     - name: Build Plugins from Go sources
       run: |
-        go build -v -buildmode=plugin -o bin/plugins/faculty/gocircuit.so ./pkg/faculty/gocircuit/
+        go build -v -buildmode=plugin -o bin/plugins/faculty/gocircuit.so -tags=plugin_faculty_gocircuit ./pkg/faculty/gocircuit/
 
     - name: Install the main executable into PATH
       run: go install -v "$MAIN_SRC_DIR"
