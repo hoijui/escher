@@ -9,7 +9,7 @@ set -Eeuo pipefail
 #set -Eeu
 
 script_dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
-repo_root="$(cd $script_dir; cd ..; pwd)"
+repo_root="$(cd "$script_dir"; cd ..; pwd)"
 # NOTE We do not use this path,
 #      even though it would make the script position independent,
 #      because it would break (or worse: run the wrong code)
@@ -30,7 +30,8 @@ fi
 echo
 echo "Running Go(lang) tests ..."
 cd "$repo_root"
-for go_test in $(find -name "*_test.go")
+find . -name "*_test.go" \
+	| while read -r go_test
 do
 	test_dir=$(dirname "$go_test")
 	cd "$test_dir"

@@ -12,7 +12,7 @@ set -Eeuo pipefail
 #set -Eeu
 
 script_dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
-repo_root="$(cd $script_dir; cd ..; pwd)"
+repo_root="$(cd "$script_dir"; cd ..; pwd)"
 # NOTE We do not use this path,
 #      even though it would make the script position independent,
 #      because it would break (or worse: run the wrong code)
@@ -75,20 +75,23 @@ svg_in="$src_dir/img/circuit.svg"
 
 svg_out="$out_dir/img/circuit-parts-generated.svg"
 echo -e "\t\"$svg_in\" --> \"$svg_out\""
-cat "$svg_in" | awk \
+awk \
 	-v label_regex=labels-instances -v do_show=0 -f "$svg_hide" \
+	< "$svg_in" \
 	> "$svg_out"
 
 svg_out="$out_dir/img/circuit-instances-generated.svg"
 echo -e "\t\"$svg_in\" --> \"$svg_out\""
-cat "$svg_in" | awk \
+awk \
 	-v label_regex=labels-parts -v do_show=0 -f "$svg_hide" \
+	< "$svg_in" \
 	> "$svg_out"
 
 svg_out="$out_dir/img/circuit-raw-generated.svg"
 echo -e "\t\"$svg_in\" --> \"$svg_out\""
-cat "$svg_in" | awk \
+awk \
 	-v label_regex='labels-.*' -v do_show=0 -f "$svg_hide" \
+	< "$svg_in" \
 	> "$svg_out"
 
 echo
@@ -98,7 +101,7 @@ echo "Generate widely-compatible versions of our SVG images (using inkscape) ...
 # but display correctly everywhere.
 for svg_in in "$out_dir/img/"*-generated.svg
 do
-	svg_out=$(echo "$svg_in" | sed -e 's|-generated\.svg$|-plain-generated.svg|')
+	svg_out="${svg_in%-generated.svg}-plain-generated.svg"
 	echo -e "\t\"$svg_in\" --> \"$svg_out\""
 	inkscape --without-gui "$svg_in" --export-text-to-path --export-plain-svg "$svg_out"
 	rm "$svg_in"
@@ -108,7 +111,10 @@ echo
 echo "Convert SVGs to PNGs (using inkscape) ..."
 for svg in "$out_dir/img/"*.svg
 do
-	png=$(echo "$svg" | sed -e 's|\(-plain\)\?\(-generated\)\?\.svg$|.png|')
+	base="${svg%.svg}"
+	base="${base%-generated}"
+	base="${base%-plain}"
+	png="${base}.png"
 	echo -e "\t\"$svg\" --> \"$png\""
 	inkscape --without-gui "$svg" --export-png "$png" > /dev/null
 done

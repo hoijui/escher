@@ -9,7 +9,7 @@ set -Eeuo pipefail
 #set -Eeu
 
 script_dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
-repo_root="$(cd $script_dir; cd ..; pwd)"
+repo_root="$(cd "$script_dir"; cd ..; pwd)"
 # NOTE We do not use this path,
 #      even though it would make the script position independent,
 #      because it would break (or worse: run the wrong code)
@@ -32,15 +32,14 @@ cd "$repo_root"
 
 if [ "${1:-}" = "" ]
 then
-	find "$tutorials_dir" -regex '.*/[A-Z][^/]*.escher' > /dev/null
-	if [ $? -ne 0 ]
+	if ! find "$tutorials_dir" -regex '.*/[A-Z][^/]*.escher' > /dev/null
 	then
 		>&2 echo "Error: No tutorials found in '$(pwd)/$tutorials_dir'."
 		exit 2
 	fi
 
-	tutorial_circuits=$(find "$tutorials_dir" -regex '.*/[A-Z][^/]*.escher' \
-		| xargs basename --multiple --suffix '.escher')
+	tutorial_circuits=$(find "$tutorials_dir" -regex '.*/[A-Z][^/]*.escher' -print0 \
+		| xargs -0 basename --multiple --suffix '.escher')
 else
 	tutorial_circuits="$1"
 fi
@@ -55,12 +54,12 @@ do
 	echo "--------------------------------------------------------------------------------"
 	src_file="${ESCHER}/tutorial/${circuit}.escher"
 	main_address="tutorial.${circuit}Main"
-	meant_to_fail=$(cat "$src_file" | grep -q -e 'MEANT_TO_FAIL' && echo "true" || echo "false")
+	meant_to_fail=$(grep -q -e 'MEANT_TO_FAIL' < "$src_file" && echo "true" || echo "false")
 	## run each tutorial for at most 2 seconds
 	#timeout  --foreground --kill-after=2 --signal=SIGINT 3s \
 	if $meant_to_fail
 	then
-		! escher "*$main_address"
+		escher "*$main_address" && exit 1
 	else
 		escher "*$main_address"
 	fi
