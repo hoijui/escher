@@ -108,7 +108,9 @@ for svg_in in "$out_dir/img/"*-generated.svg
 do
 	svg_out="${svg_in%-generated.svg}-plain-generated.svg"
 	echo -e "\t\"$svg_in\" --> \"$svg_out\""
-	inkscape --without-gui "$svg_in" --export-text-to-path --export-plain-svg "$svg_out"
+	# This line is for old versions of inkscape
+	#inkscape --without-gui "$svg_in" --export-text-to-path --export-plain-svg "$svg_out"
+	inkscape "$svg_in" --export-text-to-path --export-plain-svg --export-filename "$svg_out"
 	rm "$svg_in"
 done
 
@@ -121,7 +123,9 @@ do
 	base="${base%-plain}"
 	png="${base}.png"
 	echo -e "\t\"$svg\" --> \"$png\""
-	inkscape --without-gui "$svg" --export-png "$png" > /dev/null
+	# This line is for old versions of inkscape
+	#inkscape --without-gui "$svg" --export-png "$png" > /dev/null
+	inkscape "$svg"  --export-filename "$png" > /dev/null
 done
 
 echo
