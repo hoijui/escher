@@ -6,8 +6,6 @@ jobs:
 
   build:
     name: Build, Test & Run Tutorials
-    env:
-      MAIN_SRC_DIR: ./cmd/escher/
     runs-on: ubuntu-latest
     steps:
 
@@ -20,36 +18,6 @@ jobs:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
 
-    - name: Get Go dependencies
-      run: go get -v -t -d ./...
-
-    - name: Create the bin directory (will contain the built binaries)
-      run: mkdir -p bin
-
-    - name: Build from Go sources
-      run: go build -v -o bin/escher "$MAIN_SRC_DIR"
-
-    - name: Create the plugin directories (will contain the built plugin binaries)
-      run: mkdir -p bin/plugins/faculty
-
-    - name: Build Plugins from Go sources
-      run: |
-        go build -v -buildmode=plugin -o bin/plugins/faculty/gocircuit.so -tags=plugin_faculty_gocircuit ./pkg/faculty/gocircuit/
-
-    - name: Install the main executable into PATH
-      run: go install -v "$MAIN_SRC_DIR"
-
-    - name: Run Go & Escher Tests
-      run: scripts/tests.sh
-
-    - name: Run Escher Tutorials
-      run: scripts/tutorials.sh
-
-    - name: Run GoLang-CI Linter
-      run: |
-        # install it into ./bin/
-        curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.25.1
-        # NOTE the " || true" chould possibly be removed from the below, once we reach 0 warnings
-        # NOTE " --enable-all" chould possibly be added to the below, to get more warnings
-        ./bin/golangci-lint run || true
+    - name: Do it
+      run: scripts/ci-build
 

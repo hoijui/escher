@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2021 Robin Vobruba <hoijui.quaero@gmail.com>
+#
+# SPDX-License-Identifier: Unlicense
+
+# Build, Test & Run Tutorials
+
+# Exit immediately on each error and unset variable;
+# see: https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+#set -Eeu
+
+main_src_dir="./cmd/escher/"
+min_go_version="1.13.1"
+
+function ver_is_min() {
+	ver="$1"
+	min="$2"
+	smaller="$(printf '%s\n%s' "$ver" "$min" \
+		| sort -t '.' -k 1,1 -k 2,2 -k 3,3 -k 4,4 -g \
+		| tail -n 1)"
+	[ "$smaller" = "$min" ]
+}
+
+if ! which go > /dev/null
+then
+	>&2 echo "ERROR: The 'go' is not in PATH -> Go is not propperly installed."
+	>&2 echo "ERROR: Please install at least version $min_go_version!"
+	exit 1
+fi
+
+go_version="$(go version | sed -e 's|^[^0-9]\+||' -e 's| .*||')"
+
+if ver_is_min "$go_version" "$min_go_version"
+then
+	>&2 echo "ERROR: Minimum go version is $min_go_version,"
+	>&2 echo "ERROR: but the 'go' in PATH is version $go_version."
+	exit 2
+fi
+
+echo "Get Go dependencies ..."
+go get -v -t -d ./...
+
+echo "Create the bin directory (will contain the built binaries) ..."
+mkdir -p bin
+
+echo "Build from Go sources ..."
+go build -v -o bin/escher "$main_src_dir"
+
+echo "Create the plugin directories (will contain the built plugin binaries) ..."
+mkdir -p bin/plugins/faculty
+
+echo "Build Plugins from Go sources ..."
+go build \
+	-v \
+	-buildmode=plugin \
+	-o bin/plugins/faculty/gocircuit.so \
+	-tags=plugin_faculty_gocircuit \
+	./pkg/faculty/gocircuit/
+
+echo "Install the main executable into PATH ..."
+go install -v "$main_src_dir"
+
+echo "Run Go & Escher Tests ..."
+scripts/tests.sh
+
+echo "Run Escher Tutorials ..."
+scripts/tutorials.sh
+
+echo "Run GoLang-CI Linter ..."
+# install it into ./bin/
+curl -sSfL "https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh" \
+	| sh -s "v1.25.1"
+# NOTE the " || true" chould possibly be removed from the line below, once we reach 0 warnings
+# NOTE " --enable-all" chould possibly be added to the line below, to get more warnings
+./bin/golangci-lint run || true
+
